@@ -1,38 +1,48 @@
-.App {
-  text-align: center;
+:root {
+  --orange-100: #ff5519;
+  --black-100: #222;
+  --white-100: #fff;
+  --light-gray-100: #f4f4f4;
+  --gray-100: #757575;
+  --black-50: rgba(34, 34, 34, 0.5);
+  --white-96: rgba(255, 255, 255, 0.96);
+  --black-15: rgba(34, 34, 34, 0.15);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Custom Fonts */
+@font-face {
+  font-family: "Pretendard-Black";
+  src: url("./fonts/Pretendard-Black.woff");
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url("./fonts/Pretendard-Bold.woff");
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@font-face {
+  font-family: "Pretendard-ExtraBold";
+  src: url("./fonts/Pretendard-ExtraBold.woff");
 }
-
-.App-link {
-  color: #61dafb;
+@font-face {
+  font-family: "Pretendard-ExtraLight";
+  src: url("./fonts/Pretendard-ExtraLight.woff");
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: "Pretendard-Light";
+  src: url("./fonts/Pretendard-Light.woff");
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  src: url("./fonts/Pretendard-Medium.woff");
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("./fonts/Pretendard-Regular.woff");
+}
+@font-face {
+  font-family: "Pretendard-SemiBold";
+  src: url("./fonts/Pretendard-SemiBold.woff");
+}
+@font-face {
+  font-family: "Pretendard-Thin";
+  src: url("./fonts/Pretendard-Thin.woff");
 }
