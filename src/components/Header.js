@@ -51,13 +51,13 @@ const Header = () => {
                         <img width={80} height={12} src="./images/app_logo_sovement.svg" />
                     </div>
                 </a>
-                <div style={{ position: 'fixed', bottom: '16px', backgroundColor: 'black', height: '16px'}}>
-                    <div>
-
-                    </div>
-                    <div>
-
-                    </div>
+                <div className='menuFooter'>
+                    <a href="#" className='btnDownload' style={{ textDecoration: 'none', color: 'white' }}>
+                        앱 다운로드
+                    </a>
+                    <a href="#" className='btnContact' style={{ textDecoration: 'none', color: 'black' }}>
+                        카카오톡 문의
+                    </a>
                 </div>
             </div>
         </div>
