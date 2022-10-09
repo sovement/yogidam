@@ -19,7 +19,7 @@ const Header = () => {
                 <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
                     <div class="tabProfile">
                         {/* <div width={80} height={80}> */}
-                        <img className="profilePicture" src="./images/app_symbol.svg" />
+                        <img className="profilePicture" src="./images/ic_profile.png" />
                         로그인하세요
                         {/* </div> */}
                     </div>
