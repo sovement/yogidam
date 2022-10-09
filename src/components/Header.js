@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom';
 import './Header.css'
 
 const Header = () => {
+
+    // const 
+
     return (
         <div className="header">
             <Link to="/">
                 <img className="headerLogo" src="./images/app_logo_orange.svg" />
             </Link>
             <input type="checkbox" id="cbMenu" />
-            <label for="cbMenu">
+            <label htmlFor="cbMenu">
                 <img src="./images/ic_menu.svg" />
             </label>
             <div id="sideMenu">
