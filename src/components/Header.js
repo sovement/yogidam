@@ -17,7 +17,7 @@ const Header = () => {
             </label>
             <div id="sideMenu">
                 <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
-                    <div class="tabProfile">
+                    <div className="tabProfile">
                         {/* <div width={80} height={80}> */}
                         <img className="profilePicture" src="./images/ic_profile.png" />
                         로그인하세요
@@ -31,19 +31,26 @@ const Header = () => {
                         지도
                     </div>
                 </Link>
-                <div class="tab">
-                    <img className="tabIcon" src="./images/ic_reward.svg" />
-                    리워드 프로모션
-                </div>
-                <div class="tab">
-                    <img className="tabIcon" src="./images/ic_chat.svg" />
-                    민원 신청
-                </div>
-                <div class="tab">
-                    <img className="tabIcon" src="./images/app_symbol.svg" />
-                    About&nbsp;
-                    <img width={80} height={12} src="./images/app_logo_sovement.svg" />
-                </div>
+                <Link to="/promotion" style={{ textDecoration: 'none', color: 'black' }}>
+                    <div class="tab">
+                        <img className="tabIcon" src="./images/ic_reward.svg" />
+                        리워드 프로모션
+                    </div>
+                </Link>
+                <Link to="/help" style={{ textDecoration: 'none', color: 'black' }}>
+                    <div class="tab">
+                        <img className="tabIcon" src="./images/ic_chat.svg" />
+                        민원 신청
+                    </div>
+                </Link>
+
+                <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
+                    <div class="tab">
+                        <img className="tabIcon" src="./images/app_symbol.svg" />
+                        About&nbsp;
+                        <img width={80} height={12} src="./images/app_logo_sovement.svg" />
+                    </div>
+                </Link>
                 <div>
 
                 </div>
