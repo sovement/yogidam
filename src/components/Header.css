@@ -76,7 +76,6 @@
     align-items: center;
     height: 24px;
     display: flex;
-    padding: 12px 20px;
     border-bottom: solid 1px var(--black-15);
     background-color: var(--white-100);
 
@@ -88,4 +87,10 @@
     line-height: 1.47;
     letter-spacing: -0.3px;
     text-align: left;
+}
+
+.tabIcon {
+    width: 24px;
+    height: 24px;
+    padding-right: 12px;
 }
