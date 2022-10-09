@@ -1,21 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
 
 const Header = () => {
 
-    // const 
+    const [isChecked, setChecked] = useState(false);
 
     return (
         <div className="header">
             <Link to="/">
                 <img className="headerLogo" src="./images/app_logo_orange.svg" />
             </Link>
-            <input type="checkbox" id="cbMenu" />
+            <input type="checkbox" id="cbMenu" checked={isChecked} onChange={(e) => setChecked(!isChecked)}/>
             <label htmlFor="cbMenu">
                 <img src="./images/ic_menu.svg" />
             </label>
-            <div id="sideMenu">
+            <div id="sideMenu" onClick={() => {setChecked(!isChecked)}}>
                 <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
                     <div className="tabProfile">
                         {/* <div width={80} height={80}> */}
@@ -44,13 +44,13 @@ const Header = () => {
                     </div>
                 </Link>
 
-                <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
+                <a href="#" style={{ textDecoration: 'none', color: 'black' }}>
                     <div class="tab">
                         <img className="tabIcon" src="./images/app_symbol.svg" />
                         About&nbsp;
                         <img width={80} height={12} src="./images/app_logo_sovement.svg" />
                     </div>
-                </Link>
+                </a>
                 <div>
 
                 </div>

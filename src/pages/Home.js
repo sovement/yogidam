@@ -158,12 +158,10 @@ const Home = () => {
     }, [])
 
     return (
-        <>
-            <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                <img className="btnLocation" src='./images/ic_location_orange.png' />
-                {showTab && <div className="infoTab" />}
-            </div>
-        </>
+        <div id="map" style={{ height: "calc(100vh - 56px)" }}>
+            <img className="btnLocation" src='./images/ic_location_orange.png' />
+            {showTab && <div className="infoTab" />}
+        </div>
     )
 }
 

@@ -4,11 +4,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
     padding: 16px;
-    z-index: 2;
     border: 1px solid var(--black-15);
 }
 
