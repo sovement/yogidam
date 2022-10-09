@@ -51,8 +51,13 @@ const Header = () => {
                         <img width={80} height={12} src="./images/app_logo_sovement.svg" />
                     </div>
                 </a>
-                <div>
+                <div style={{ position: 'fixed', bottom: '16px', backgroundColor: 'black', height: '16px'}}>
+                    <div>
 
+                    </div>
+                    <div>
+
+                    </div>
                 </div>
             </div>
         </div>
