@@ -68,7 +68,7 @@ const Home = () => {
                     selectedMarker = marker;
                     selectedMarkerType = "smoke";
                 }
-                else if (selectedMarker == marker) {
+                else if (selectedMarker === marker) {
                     setShowTab(false);
                     if (selectedMarkerType === "smoke") {
                         !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
@@ -109,7 +109,7 @@ const Home = () => {
                     selectedMarker = marker;
                     selectedMarkerType = "nonsmoke"
                 }
-                else if (selectedMarker == marker) {
+                else if (selectedMarker === marker) {
                     setShowTab(false);
                     if (selectedMarkerType === "smoke") {
                         !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
@@ -160,8 +160,8 @@ const Home = () => {
     return (
         <>
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-
-                {showTab && <div className="infoTab"></div>}
+                <img className="btnLocation" src='./images/ic_location_orange.png' />
+                {showTab && <div className="infoTab" />}
             </div>
         </>
     )
