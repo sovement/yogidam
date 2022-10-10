@@ -69,6 +69,7 @@
     width: 100%;
     height: 21px;
     align-items: center;
+    display: flex;
     padding: 18px 16px;
     background-color: var(--white-100);
 
@@ -81,4 +82,25 @@
     letter-spacing: normal;
     text-align: left;
     color: var(--black-100);
+}
+
+.versionBadge {
+    width: 30px;
+    height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    box-sizing: border-box;
+    border: solid 1px var(--gray-100);
+
+    font-family: Pretendard;
+    font-size: 11px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: -0.22px;
+    text-align: center;
+    color: var(--gray-100);
 }

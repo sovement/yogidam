@@ -1,0 +1,28 @@
+.message {
+    width: calc(100% - 32px);
+    height: 250px;
+    align-self: stretch;
+    display: flex;
+    resize: none;
+    margin-top: 12px;
+    padding: 9px 10px;
+    border-radius: 4px;
+    border: solid 0.5px var(--black-15);
+    background-color: var(--light-gray-100);
+}
+
+.btnSubmit {
+    width: 85%;
+    height: 19px;
+    bottom: 24px;
+    position: fixed;
+    left:50%;
+    z-index: 2;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: var(--orange-100);
+    color: var(--white-100);
+}

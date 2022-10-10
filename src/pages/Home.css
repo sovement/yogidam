@@ -1,21 +1,14 @@
 .btnLocation {
-    width: 44px;
-    height: 44px;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-    border: solid 1px var(--black-15);
-    background-color: var(--white-96);
+    width:44px;
+    height:44px;
+    z-index: 2;
+    right:12px;
+    bottom:12px;
+    position: fixed;
 }
 
 .infoTab {
-    width: 90%;
+    width: 85%;
     height: 126px;
     flex-grow: 0;
     display: flex;

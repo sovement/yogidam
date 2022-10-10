@@ -2,12 +2,6 @@ import { getAuth } from "firebase/auth";
 import styles from './MypageDetail.module.css';
 
 const MypageDetail = () => {
-    // const auth = getAuth();
-    // const user = auth.currentUser;
-
-    // const displayName = user.displayName;
-    // const email = user.email;
-    // const photoURL = user.photoURL;
 
     return (
         <div>
