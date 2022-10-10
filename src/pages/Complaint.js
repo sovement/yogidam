@@ -1,6 +1,54 @@
+/*global kakao*/
+import React, { useEffect } from 'react'
+
 import './Complaint.css';
 
 const Complaint = () => {
+
+    useEffect(() => {
+        var mapContainer = document.getElementById('map'), // 지도 표시할 div
+            mapOption = {
+                draggable: false,
+                center: new kakao.maps.LatLng(37.55634, 126.93635), // 지도의 중심좌표
+                level: 1 // 지도의 확대 레벨
+            };
+
+        // 지도 생성
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 현재위치
+        if (navigator.geolocation) {
+
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                // 현재위치 지정
+                var lat = position.coords.latitude,
+                    lon = position.coords.longitude;
+                var locPosition = new kakao.maps.LatLng(lat, lon);
+
+                // 현재위치 마커 생성
+                var markerCurrent = new kakao.maps.MarkerImage(
+                    './images/ic_marker_current.svg',
+                    new kakao.maps.Size(32, 32),
+                    { offset: new kakao.maps.Point(0, 0) });
+
+                var marker = new kakao.maps.Marker({
+                    position: locPosition,
+                    image: markerCurrent, // 마커이미지 설정
+                    clickable: true
+                });
+                marker.setMap(map);
+                map.setCenter(locPosition);
+
+                // TODO: 1초에 한 번씩 갱신
+            });
+
+        } else { // HTML5 GeoLocation 사용할 수 없을 때
+            var message = '위치정보를 사용할 수 없습니다. 다시 시도해주세요.'
+            alert(message)
+        }
+    }, [])
+
     return (
         <>
             <div style={{ margin: '32px 16px' }}>
@@ -14,9 +62,10 @@ const Complaint = () => {
             </div>
 
             <div style={{ margin: '32px 16px' }}>
-                <div className='text Headline'>위치</div>
+                <div className='text Headline' style={{ marginBottom: '12px' }}>위치</div>
+                <div id="map" style={{ height: "0", paddingBottom: '40%'}}></div>
 
-                <div className='text Headline'>민원내용</div>
+                <div className='text Headline' style={{ marginTop: '24px' }}>민원내용</div>
                 <textarea style={{ whiteSpace: 'pre-wrap' }} className='message -Placeholder Placeholder-2' placeholder='
                 민원 내용을 입력해주세요. &#13;
                 내용을 검토한 후, 적합한 정부 부처에 전해 드립니다. &#13;

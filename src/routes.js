@@ -15,7 +15,6 @@ const routes = [
         path: "/complaint",
         component: Complaint,
     },
-    
 ];
 
 export default routes;
