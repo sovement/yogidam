@@ -1,0 +1,95 @@
+.profile {
+    width: 100%;
+    height: 156px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile img {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 1.33333px solid var(--black-15);
+}
+
+.profileContainer {
+    margin: 0px 16px 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.title {
+    margin-bottom: 6px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+    color: var(--orange-100);
+}
+
+.mypage_info {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 100%;
+    background-color: var(--white-100);
+}
+
+.sub_title {
+    height: 20px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: var(--gray-100);
+}
+
+.content {
+    margin: 9px 0;
+    height: 22px;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+    color: var(--black-100);
+}
+
+.profileLine {
+    height: 0.5px;
+    width: 100%;
+    background-color: var(--black-15);
+}
+
+.mypage_tab {
+    margin: 0px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tab {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--gray-100);
+    padding: 18px 0;
+}
+
+.mypageLine {
+    height: 1px;
+    width: 100%;
+    background-color: var(--black-15);
+}

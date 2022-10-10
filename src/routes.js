@@ -1,5 +1,6 @@
 import Home from "./pages/Home";
 import Mypage from "./pages/Mypage";
+import MypageDetail from "./pages/MypageDetail";
 
 const routes = [
     {
@@ -9,6 +10,10 @@ const routes = [
     {
         path: "/mypage",
         component: Mypage,
+    },
+    {
+        path: "/mypage/detail",
+        component: MypageDetail,
     },
 ];
 
