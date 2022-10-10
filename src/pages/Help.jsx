@@ -28,7 +28,7 @@ function Help() {
     };
 
     const applyConfirm = () => {
-        history.push('/help/complete')
+        history.push('/complete')
         console.log("접수완료")
     }
     const cancelConfirm = () => console.log("취소완료")
@@ -36,19 +36,19 @@ function Help() {
     const confirmNone = useConfirm(
         applyConfirm,
         cancelConfirm,
-        "수거함이 여기 없어요\n지도에 표기된 위치에서\n수거함을 찾지 못하셨나요?"
+        "지도에 표기된 위치에서\n수거함을 찾지 못하셨나요?"
     );
 
     const confirmDirt = useConfirm(
         applyConfirm,
         cancelConfirm,
-        "주변이 더러워요\n해당 위치 주변이 담배꽁초로 인해\n 더러운 상황이 맞나요?"
+        "해당 위치 주변이 담배꽁초로 인해\n더러운 상황이 맞나요?"
     );
 
     const confirmDifferent = useConfirm(
         applyConfirm,
         cancelConfirm,
-        "사진 속 수거함과 달라요\n지도에 표시된 수거함의 사진과\n 실제 수거함의 모습이 다른가요?"
+        "지도에 표시된 수거함의 사진과\n실제 수거함의 모습이 다른가요?"
     );
 
     return (
@@ -88,17 +88,12 @@ function Help() {
                     </span>
                 </div>
             </div>
-            <div>
-
-                <Link to='/complaint'
-                    style={{
-                        textDecoration: "none", color: 'black'
-                    }}>
-                    <button className="complainButton">
-                        <span className="complainButton-text">민원 신청</span>
-                    </button>
-                </Link>
-            </div>
+            <Link to='/complaint'
+                style={{ textDecoration: "none", color: 'black' }}>
+                <div className="complainButton - Large-Lable">
+                    민원 신청
+                </div>
+            </Link>
         </div>
     )
 }

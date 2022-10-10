@@ -1,5 +1,6 @@
 /*global kakao*/
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 
 import './Complaint.css';
@@ -79,9 +80,11 @@ const Complaint = () => {
                 </textarea>
             </div>
 
-            <div className='btnSubmit \- Large-Lable'>
-                민원 신청
-            </div>
+            <Link to="/complete" style={{ textDecoration: 'none', color: 'black' }}>
+                <div className='btnSubmit \- Large-Lable'>
+                    민원 신청
+                </div>
+            </Link>
         </>
     );
 }
