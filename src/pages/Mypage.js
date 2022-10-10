@@ -26,7 +26,7 @@ const Mypage = ({userInform}) => {
                 개인정보보호정책
             </div>
         </Link>
-        <div className="lastTab">
+        <div className={styles.lastTab}>
             현재 버전&nbsp;&nbsp;
             <div className={styles.versionBadge}>Beta</div>
         </div> 

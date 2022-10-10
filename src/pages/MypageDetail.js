@@ -1,13 +1,23 @@
 import { getAuth } from "firebase/auth";
+import { Link } from 'react-router-dom';
 import styles from './MypageDetail.module.css';
 
-const MypageDetail = ({userInform}) => {
+const MypageDetail = ({ userInform }) => {
 
     return (
         <>
+            <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
+                <img style={{
+                    position: 'fixed',
+                    top: '16px',
+                    left: '16px',
+                    width: '24px',
+                    height: '24px',
+                }}
+                    src="../images/ic_arrow_back.svg" />
+            </Link>
             <div className={styles.headerContainer}>
-                <img src='./images/ic_arrow_back.svg' />
-                <span>프로필 정보</span>
+                <span className="text Headline">프로필 정보</span>
             </div>
             <div className={styles.profile}>
                 <img src={userInform.photoURL} alt="profile" />
