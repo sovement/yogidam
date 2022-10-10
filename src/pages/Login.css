@@ -1,0 +1,27 @@
+.gradientBox {
+    width: 100%;
+    height: 180px;
+    background-image: linear-gradient(180deg,
+            rgba(237, 97, 51, 0.5) -19%,
+            rgba(255, 255, 255, 0) 100%);
+}
+
+.container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.slogan {
+    height: 44px;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: -0.32px;
+    text-align: center;
+    color: var(--orange-50);
+}

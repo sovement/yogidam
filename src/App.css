@@ -1,12 +1,20 @@
 :root {
-  --orange-100: #ff5519;
   --black-100: #222;
+  --orange-100: #ff5519;
+  --black-15: rgba(34, 34, 34, 0.15);
   --white-100: #fff;
-  --light-gray-100: #f4f4f4;
   --gray-100: #757575;
+  --light-gray-100: #f4f4f4;
   --black-50: rgba(34, 34, 34, 0.5);
   --white-96: rgba(255, 255, 255, 0.96);
-  --black-15: rgba(34, 34, 34, 0.15);
+  --gray-10: rgba(117, 117, 117, 0.1);
+  --black-90: rgba(34, 34, 34, 0.9);
+  --orange-30: rgba(255, 85, 25, 0.3);
+  --orange-50: rgba(255, 85, 25, 0.5);
+  --label-color-light-primary: #000;
+  --separator-color-light-with-transparency: rgba(60, 60, 67, 0.36);
+  --default-system-blue-light: #007aff;
+
 }
 
 /* Custom Fonts */
@@ -14,34 +22,42 @@
   font-family: "Pretendard-Black";
   src: url("./fonts/Pretendard-Black.woff");
 }
+
 @font-face {
   font-family: "Pretendard-Bold";
   src: url("./fonts/Pretendard-Bold.woff");
 }
+
 @font-face {
   font-family: "Pretendard-ExtraBold";
   src: url("./fonts/Pretendard-ExtraBold.woff");
 }
+
 @font-face {
   font-family: "Pretendard-ExtraLight";
   src: url("./fonts/Pretendard-ExtraLight.woff");
 }
+
 @font-face {
   font-family: "Pretendard-Light";
   src: url("./fonts/Pretendard-Light.woff");
 }
+
 @font-face {
   font-family: "Pretendard-Medium";
   src: url("./fonts/Pretendard-Medium.woff");
 }
+
 @font-face {
   font-family: "Pretendard-Regular";
   src: url("./fonts/Pretendard-Regular.woff");
 }
+
 @font-face {
   font-family: "Pretendard-SemiBold";
   src: url("./fonts/Pretendard-SemiBold.woff");
 }
+
 @font-face {
   font-family: "Pretendard-Thin";
   src: url("./fonts/Pretendard-Thin.woff");
