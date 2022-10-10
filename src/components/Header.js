@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
 
-const Header = () => {
+const Header = ({userInform}) => {
 
     const [isChecked, setChecked] = useState(false);
 
@@ -16,14 +16,26 @@ const Header = () => {
                 <img src="./images/ic_menu.svg" />
             </label>
             <div id="sideMenu" onClick={() => { setChecked(!isChecked) }}>
-                <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
-                    <div className="tabProfile">
-                        {/* <div width={80} height={80}> */}
-                        <img className="profilePicture" src="./images/ic_profile.png" />
-                        로그인하세요
-                        {/* </div> */}
-                    </div>
-                </Link>
+                {userInform == null ? (
+                    <Link to="/login" style={{ textDecoration: 'none', color: 'black' }}>
+                        <div className="tabProfile">
+                            {/* <div width={80} height={80}> */}
+                            <img className="profilePicture" src="./images/ic_profile.png" />
+                            로그인하세요
+                            {/* </div> */}
+                        </div>
+                    </Link>
+                ) : (
+                    <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
+                        <div className="tabProfile">
+                            {/* <div width={80} height={80}> */}
+                            <img className="profilePicture" src={userInform.photoURL} />
+                            {userInform.displayName}
+                            {/* </div> */}
+                        </div>
+                    </Link>
+                )}
+                
 
                 <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
                     <div class="tab">
