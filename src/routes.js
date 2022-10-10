@@ -3,6 +3,7 @@ import Mypage from "./pages/Mypage";
 import MypageDetail from "./pages/MypageDetail";
 import Complaint from "./pages/Complaint";
 import Login from "./pages/Login";
+import Help from "./pages/Help";
 
 const routes = [
     {
@@ -24,6 +25,10 @@ const routes = [
     {
         path: "/login",
         component: Login,
+    },
+    {
+        path: "/help",
+        component: Help,
     },
 ];
 

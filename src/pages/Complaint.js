@@ -1,5 +1,6 @@
 /*global kakao*/
 import React, { useEffect } from 'react'
+import Header from '../components/Header';
 
 import './Complaint.css';
 
@@ -51,6 +52,7 @@ const Complaint = () => {
 
     return (
         <>
+            <Header />
             <div style={{ margin: '32px 16px' }}>
                 <div className='Title Large-Title'>
                     민원을 작성해주세요
@@ -63,7 +65,7 @@ const Complaint = () => {
 
             <div style={{ margin: '32px 16px' }}>
                 <div className='text Headline' style={{ marginBottom: '12px' }}>위치</div>
-                <div id="map" style={{ height: "0", paddingBottom: '40%'}}></div>
+                <div id="map" style={{ height: "0", paddingBottom: '40%' }}></div>
 
                 <div className='text Headline' style={{ marginTop: '24px' }}>민원내용</div>
                 <textarea style={{ whiteSpace: 'pre-wrap' }} className='message -Placeholder Placeholder-2' placeholder='

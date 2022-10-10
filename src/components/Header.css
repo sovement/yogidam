@@ -74,6 +74,7 @@
     width: 100%;
     align-items: center;
     height: 24px;
+    padding: 12px 20px;
     display: flex;
     border-bottom: solid 1px var(--black-15);
     background-color: var(--white-100);

@@ -29,7 +29,6 @@
 .text-subtext {
     width: 390px;
     height: 40px;
-    background-color: var(--light-gray-100);
     font-family: Pretendard;
     color: rgba(34, 34, 34, 0.5);
     text-align: left;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../components/Header';
 import './Home.css';
 
-const Home = ({userInform}) => {
+const Home = ({ userInform }) => {
 
     const [showTab, setShowTab] = useState(false);
 
@@ -160,11 +160,11 @@ const Home = ({userInform}) => {
 
     return (
         <>
-        <Header userInform={userInform} />
-        <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-            <img className="btnLocation" src='./images/ic_location_orange.png' />
-            {showTab && <div className="infoTab" />}
-        </div>
+            <Header userInform={userInform} />
+            <div id="map" style={{ height: "calc(100vh - 56px)" }}>
+                <img className="btnLocation" src='./images/ic_location_orange.png' />
+                {showTab && <div className="infoTab" />}
+            </div>
         </>
     )
 }
