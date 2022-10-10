@@ -25,3 +25,8 @@
     text-align: center;
     color: var(--orange-50);
 }
+
+.kakaoLogin {
+    width: 350px;
+    height: 52.72px;
+}
