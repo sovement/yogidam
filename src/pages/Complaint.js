@@ -1,9 +1,37 @@
 /*global kakao*/
-import React, { useEffect } from 'react'
-
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Header from '../components/Header';
+import { db } from '../firebase';
+import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 import './Complaint.css';
 
-const Complaint = () => {
+const Complaint = ({userInform}) => {
+    const [message, setMessage] = useState('');
+    const [isCheckingBox, setIsCheckingBox] = useState(false);
+    const [isAddressBox, setIsAddressBox] = useState(false);
+
+
+    const changeState = (e) => {
+        if (e.target.checked){
+            setIsCheckingBox(true)
+            console.log('지도 주소 활성')
+        }else{
+            setIsCheckingBox(false)
+            console.log('지도 주소 비활성')
+        }
+    }
+
+    useEffect((e)=>{
+        if(isCheckingBox){
+            setIsAddressBox(true)
+            console.log('주소창 활성')
+        }else{
+            setIsAddressBox(false)
+            console.log('주소창 비활성')
+        };
+    })
+
 
     useEffect(() => {
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
@@ -49,8 +77,26 @@ const Complaint = () => {
         }
     }, [])
 
+    const onChange = (event) => {
+        const {
+          target: { value },
+        } = event;
+        setMessage(value);
+    };
+
+    const sendComplaint = () => {
+        const field = {
+            timestamp: serverTimestamp(),
+            address: new GeoPoint(30.3, 50.1),
+            who: userInform.uid,
+            message: message
+        };
+        addDoc(collection(db, "help", "help", "compaint"), field);
+    }
+
     return (
         <>
+            <Header />
             <div style={{ margin: '32px 16px' }}>
                 <div className='Title Large-Title'>
                     민원을 작성해주세요
@@ -60,13 +106,33 @@ const Complaint = () => {
                     상생 가능한 도시 조성을 위해 소중한 한마디 부탁드립니다.
                 </div>
             </div>
-
+            <div>
+                {/* 체크박스 선택하면 활성 비활성 */}
+                <div className='text Headline' style={{ marginBottom: '12px' }}><input type='checkbox' className="check-position" onClick={e=> changeState(e)} checked={isCheckingBox}></input><span className="text-position">위치</span></div>
+                <div>
+                    {/* 아이콘 넣으려면... */}
+                <input
+                disabled= {(!isAddressBox)}
+                className="text-address"
+                placeholder='서울특별시 서대문구 연세로5가길 16'
+                type="text"
+                ></input>
+                </div>
+            </div>
             <div style={{ margin: '32px 16px' }}>
                 <div className='text Headline' style={{ marginBottom: '12px' }}>위치</div>
-                <div id="map" style={{ height: "0", paddingBottom: '40%'}}></div>
+                <div>
+                    
+                </div>
+                {/* 지도부분 */}
+                <div id="map" style={{ height: "0", paddingBottom: '0%' }}></div>
 
                 <div className='text Headline' style={{ marginTop: '24px' }}>민원내용</div>
-                <textarea style={{ whiteSpace: 'pre-wrap' }} className='message -Placeholder Placeholder-2' placeholder='
+                <textarea 
+                    style={{ whiteSpace: 'pre-wrap' }}
+                    className='message -Placeholder Placeholder-2'
+                    onChange={onChange}
+                    placeholder='
                 민원 내용을 입력해주세요. &#13;
                 내용을 검토한 후, 적합한 정부 부처에 전해 드립니다. &#13;
                 요구 사항 / 민원 대상을 명시해주시면 더 빠른 처리가 가능해요. &#13; &#13;
@@ -77,9 +143,11 @@ const Complaint = () => {
                 </textarea>
             </div>
 
-            <div className='btnSubmit \- Large-Lable'>
-                민원 신청
-            </div>
+            <Link to="/complete" style={{ textDecoration: 'none', color: 'black' }}>
+                <div className='btnSubmit \- Large-Lable' onClick={sendComplaint}>
+                    민원 신청
+                </div>
+            </Link>
         </>
     );
 }
