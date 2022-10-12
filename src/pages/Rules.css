@@ -1,0 +1,28 @@
+.text-rules {
+    display: flex;
+
+    width: 390px;
+    height: auto;
+    padding: 24px 16px 36px;
+    gap: 10px;
+    margin: 40px 16px 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+
+.text-rules-font {
+    width: 358px;
+    height: auto;
+    flex-grow: 0;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.57;
+    letter-spacing: -0.28px;
+    text-align: left;
+    color: #757575;
+}

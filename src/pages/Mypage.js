@@ -11,7 +11,7 @@ const Mypage = ({userInform}) => {
                 <img className={styles.profile} src={userInform.photoURL} alt="profile" />
                 <div>
                     <div className={styles.name}>{userInform.displayName}</div>
-                    <div className={styles.email}>{userInform.email == null ? '이메일 정보가 없습니다.' : userInform.email}</div>
+                    <div className={styles.email}>{userInform.email.slice(-13) === '@sovement.com' ? '이메일 정보가 없습니다.' : userInform.email}</div>
                 </div>
             </div>
             <div className={styles.divLine} />
@@ -26,7 +26,7 @@ const Mypage = ({userInform}) => {
                 개인정보보호정책
             </div>
         </Link>
-        <div className="lastTab">
+        <div className={styles.lastTab}>
             현재 버전&nbsp;&nbsp;
             <div className={styles.versionBadge}>Beta</div>
         </div> 
