@@ -11,7 +11,6 @@ import { auth, db } from "./firebase";
 import { signInWithCustomToken } from 'firebase/auth';
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
-
 const { Kakao } = window;
 
 

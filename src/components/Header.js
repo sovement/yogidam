@@ -68,7 +68,7 @@ const Header = ({userInform}) => {
                     <a target='_blank' href="https://www.google.com/search?q=(%EC%95%B1+%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C+%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9E%84)&oq=(%EC%95%B1+%EB%8B%A4%EC%9A%B4%EB%A1%9C%EB%93%9C+%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9E%84)&aqs=chrome..69i57j0i546l3.8045j0j7&sourceid=chrome&ie=UTF-8" className='btnDownload' style={{ textDecoration: 'none', color: 'white' }}>
                         앱 다운로드
                     </a>
-                    <a target='_blank' href="https://www.google.com/search?q=(%EC%B9%B4%EC%B9%B4%EC%98%A4+%EC%B1%84%EB%84%90+%EB%A7%81%ED%81%AC%EC%9E%84)&oq=(%EC%B9%B4%EC%B9%B4%EC%98%A4+%EC%B1%84%EB%84%90+%EB%A7%81%ED%81%AC%EC%9E%84)&aqs=chrome..69i57j0i546l2.6455j0j7&sourceid=chrome&ie=UTF-8" className='btnContact' style={{ textDecoration: 'none', color: 'black' }}>
+                    <a target='_blank' href="http://pf.kakao.com/_pxjkTxj" className='btnContact' style={{ textDecoration: 'none', color: 'black' }}>
                         카카오톡 문의
                     </a>
                 </div>
