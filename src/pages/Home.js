@@ -1,11 +1,13 @@
 /*global kakao*/
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header';
+import SmokeTab from '../components/SmokeTab';
+import NonsmokeTab from '../components/NonsmokeTab';
 import './Home.css';
 
 const Home = ({ userInform }) => {
 
-    const [showTab, setShowTab] = useState(false);
+    const [tab, setTab] = useState("none");
 
     useEffect(() => {
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
@@ -62,15 +64,15 @@ const Home = ({ userInform }) => {
                     }
                     marker.setImage(markerSmokePressed);
 
-                    // 정보 탭 띄우기
-                    setShowTab(true);
+                    // 흡연구역 정보 탭 띄우기
+                    setTab("smoke");
 
 
                     selectedMarker = marker;
                     selectedMarkerType = "smoke";
                 }
                 else if (selectedMarker === marker) {
-                    setShowTab(false);
+                    setTab("none");
                     if (selectedMarkerType === "smoke") {
                         !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
                     } else {
@@ -104,14 +106,14 @@ const Home = ({ userInform }) => {
                     }
                     marker.setImage(markerNonsmokePressed);
 
-                    // 정보 탭 띄우기
-                    setShowTab(true);
+                    // 금연구역 정보 탭 띄우기
+                    setTab("nonsmoke");
 
                     selectedMarker = marker;
                     selectedMarkerType = "nonsmoke"
                 }
                 else if (selectedMarker === marker) {
-                    setShowTab(false);
+                    setTab("none");
                     if (selectedMarkerType === "smoke") {
                         !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
                     } else {
@@ -163,7 +165,8 @@ const Home = ({ userInform }) => {
             <Header userInform={userInform} />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
                 <img className="btnLocation" src='./images/ic_location_orange.png' />
-                {showTab && <div className="infoTab" />}
+                {tab === "smoke" && <SmokeTab/>}
+                {tab === "nonsmoke" && <NonsmokeTab/>}
             </div>
         </>
     )

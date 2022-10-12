@@ -16,7 +16,7 @@ const Mypage = ({userInform}) => {
             </div>
             <div className={styles.divLine} />
         </Link>
-        <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to="/Rules" style={{ textDecoration: 'none', color: 'black' }}>
             <div className={styles.tab}>
                 이용약관
             </div>

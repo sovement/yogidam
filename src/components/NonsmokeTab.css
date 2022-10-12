@@ -1,0 +1,57 @@
+.nonsmokeTab {
+    width: 85%;
+    height: 94px;
+    position: fixed;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    z-index: 2;
+    padding: 16px;
+    border-radius: 4px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
+    border: solid 1px var(--black-15);
+    background-color: var(--white-96);
+}
+
+.textContainer {
+    width: 228px;
+    margin-left: 16px;
+}
+
+.btnContainer {
+    gap: 8px;
+    display: flex;
+}
+
+.nonsmokeBadge {
+    width: 27px;
+    height: 19px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    border: solid 1px var(--gray-100);
+    color: var(--gray-100);
+}
+
+.btnComplaint {
+    height: 13px;
+    width: 228px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 11px 9px;
+    border-radius: 100px;
+    border: solid 1px var(--black-15);
+    background-color: var(--white-100);
+    color: var(--black-100);
+}

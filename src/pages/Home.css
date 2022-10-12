@@ -6,26 +6,3 @@
     bottom:12px;
     position: fixed;
 }
-
-.infoTab {
-    width: 85%;
-    height: 126px;
-    flex-grow: 0;
-    display: flex;
-    position: fixed;
-    left: 50%;
-    bottom: 12px;
-    transform: translateX(-50%);
-    z-index: 2;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    padding: 16px;
-    border-radius: 4px;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
-    border: solid 1px var(--black-15);
-    background-color: var(--white-96);
-}

@@ -1,3 +1,4 @@
+import { getAuth } from "firebase/auth";
 import { Link } from 'react-router-dom';
 import styles from './MypageDetail.module.css';
 import { useHistory } from "react-router-dom";
