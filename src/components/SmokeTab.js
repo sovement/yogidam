@@ -24,17 +24,17 @@ const SmokeTab = () => {
                     서울특별시 서대문구 연세로5길 20
                 </div>
                 <div className='btnContainer'>
-                    <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
-                    <div className='btnNavi Text-Style'>
-                        <img src='./images/ic_direction.svg'></img>
-                        길찾기
-                    </div>
+                    <Link to="#" style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
+                        <div className='btnNavi Text-Style'>
+                            <img src='./images/ic_direction.svg'></img>
+                            길찾기
+                        </div>
                     </Link>
-                    <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
-                    <div className='btnHelp Text-Style'>
-                        <img src='./images/ic_warning.svg' />
-                        도움요청
-                    </div>
+                    <Link to="#" style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
+                        <div className='btnHelp Text-Style'>
+                            <img src='./images/ic_warning.svg' />
+                            도움요청
+                        </div>
                     </Link>
                 </div>
             </div>
