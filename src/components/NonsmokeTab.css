@@ -1,10 +1,8 @@
-.nonsmokeTab {
+.smokeTab {
     width: 85%;
     height: 94px;
     position: fixed;
     display: flex;
-    /* justify-content: center; */
-    align-items: center;
     left: 50%;
     bottom: 12px;
     transform: translateX(-50%);
@@ -19,31 +17,34 @@
 }
 
 .textContainer {
-    width: 228px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
     margin-left: 16px;
 }
 
 .btnContainer {
     gap: 8px;
     display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
 }
 
-.nonsmokeBadge {
+.smokeBadge {
     width: 27px;
     height: 19px;
-    flex-grow: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     border-radius: 2px;
-    border: solid 1px var(--gray-100);
-    color: var(--gray-100);
+    border: solid 1px var(--orange-100);
+    color: var(--orange-100);
 }
 
 .btnComplaint {
-    height: 13px;
-    width: 228px;
+    height: 15px;
+    flex-grow: 1;
     display: flex;
     flex-direction: row;
     justify-content: center;
