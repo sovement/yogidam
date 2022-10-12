@@ -15,7 +15,7 @@ const Complete = () => {
                     상생 가능한 도시와 건전한 흡연 문화 조성에<br />
                     한 발 나아갈 수 있는 의견을 주셔서 감사합니다!<br />
                 </div>
-                <img style={{ width: '280px', height: '280px', marginTop: '88px' }} src='./images/app_logo_vertical.svg' />
+                <img style={{ width: '280px', height: '280px', marginTop: '88px' }} src='./images/app_symbol_3d.png' />
             </div>
             <Link to='/' style={{ textDecoration: "none", color: 'black' }}>
                 <div className="btnHome">
