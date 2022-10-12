@@ -1,11 +1,13 @@
 /*global kakao*/
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-
+import { db } from '../firebase';
+import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 import './Complaint.css';
 
-const Complaint = () => {
+const Complaint = ({userInform}) => {
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
@@ -51,6 +53,23 @@ const Complaint = () => {
         }
     }, [])
 
+    const onChange = (event) => {
+        const {
+          target: { value },
+        } = event;
+        setMessage(value);
+    };
+
+    const sendComplaint = () => {
+        const field = {
+            timestamp: serverTimestamp(),
+            address: new GeoPoint(30.3, 50.1),
+            who: userInform.uid,
+            message: message
+        };
+        addDoc(collection(db, "help", "help", "compaint"), field);
+    }
+
     return (
         <>
             <Header />
@@ -69,7 +88,11 @@ const Complaint = () => {
                 <div id="map" style={{ height: "0", paddingBottom: '40%' }}></div>
 
                 <div className='text Headline' style={{ marginTop: '24px' }}>민원내용</div>
-                <textarea style={{ whiteSpace: 'pre-wrap' }} className='message -Placeholder Placeholder-2' placeholder='
+                <textarea 
+                    style={{ whiteSpace: 'pre-wrap' }}
+                    className='message -Placeholder Placeholder-2'
+                    onChange={onChange}
+                    placeholder='
                 민원 내용을 입력해주세요. &#13;
                 내용을 검토한 후, 적합한 정부 부처에 전해 드립니다. &#13;
                 요구 사항 / 민원 대상을 명시해주시면 더 빠른 처리가 가능해요. &#13; &#13;
@@ -81,7 +104,7 @@ const Complaint = () => {
             </div>
 
             <Link to="/complete" style={{ textDecoration: 'none', color: 'black' }}>
-                <div className='btnSubmit \- Large-Lable'>
+                <div className='btnSubmit \- Large-Lable' onClick={sendComplaint}>
                     민원 신청
                 </div>
             </Link>

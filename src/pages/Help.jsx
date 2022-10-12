@@ -1,8 +1,10 @@
 import { Link, useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import './Help.css';
+import { db } from "../firebase";
+import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 
-function Help() {
+function Help({userInform}) {
 
     const history = useHistory();
     const useConfirm = (onConfirm, onCancel, message = "Are you sure?") => {
@@ -34,19 +36,43 @@ function Help() {
     const cancelConfirm = () => console.log("취소완료")
 
     const confirmNone = useConfirm(
-        applyConfirm,
+        function(){
+            const field = {
+                timestamp: serverTimestamp(),
+                address: new GeoPoint(30.3, 50.1),
+                who: userInform.uid,
+            };
+            addDoc(collection(db, "help", "help", "non_here"), field);
+            applyConfirm();
+        },
         cancelConfirm,
         "지도에 표기된 위치에서\n수거함을 찾지 못하셨나요?"
     );
 
     const confirmDirt = useConfirm(
-        applyConfirm,
+        function(){
+            const field = {
+                timestamp: serverTimestamp(),
+                address: new GeoPoint(30.3, 50.1),
+                who: userInform.uid,
+            };
+            addDoc(collection(db, "help", "help", "dirty"), field);
+            applyConfirm();
+        },
         cancelConfirm,
         "해당 위치 주변이 담배꽁초로 인해\n더러운 상황이 맞나요?"
     );
 
     const confirmDifferent = useConfirm(
-        applyConfirm,
+        function(){
+            const field = {
+                timestamp: serverTimestamp(),
+                address: new GeoPoint(30.3, 50.1),
+                who: userInform.uid,
+            };
+            addDoc(collection(db, "help", "help", "different"), field);
+            applyConfirm();
+        },
         cancelConfirm,
         "지도에 표시된 수거함의 사진과\n실제 수거함의 모습이 다른가요?"
     );

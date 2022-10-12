@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import routes from './routes';
 import {
@@ -117,14 +117,13 @@ const App = () => {
     return userRef;
   }
 
-
   return (
     <Router>
       <Switch>
         <div>
           {routes.map((route) => (
             <Route key={route.path} exact path={route.path}>
-              <route.component userInform={userInform} />
+              <route.component userInform={userInform} setUserInform={setUserInform} />
             </Route>
           )
           )}
