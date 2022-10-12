@@ -12,7 +12,7 @@ const SmokeTab = () => {
                 src='./images/kakao_login_large_wide.png' />
             <div className='textContainer'>
                 <div style={{ display: 'flex' }}>
-                    <div className="badge small_text">
+                    <div className="smokeBadge small_text">
                         흡연
                     </div>
                     <span className='\- Headline'>
