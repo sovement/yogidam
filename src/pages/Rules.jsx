@@ -1,11 +1,23 @@
 import React from 'react'
-import Header from '../components/Header';
+import { Link } from 'react-router-dom'
 import './Rules.css';
 
 function Rules() {
     return (
         <>
-            <Header />
+        <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
+                <img style={{
+                    position: 'fixed',
+                    top: '16px',
+                    left: '16px',
+                    width: '24px',
+                    height: '24px',
+                }}
+                    src="../images/ic_arrow_back.svg" />
+            </Link>
+            <div className='headerContainer'>
+                <span className="text Headline">프로필 정보</span>
+            </div>
             <div className="text-rules">
                 <span class="text-rules-font">
 
