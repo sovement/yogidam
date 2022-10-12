@@ -36,6 +36,9 @@ const routes = [
     }, {
         path: "/complete",
         component: Complete,
+    }, {
+        path: "/rules",
+        component: Rules,
     },
 ];
 
