@@ -8,12 +8,8 @@ import './Home.css';
 const Home = ({ userInform }) => {
 
     const [tab, setTab] = useState("none");
-    const [currentLat, setCurrentLat] = useState(37.55634);
-    const [currentLng, setCurrentLng] = useState(126.93635); // 이곳은 신촌 어딘가..
 
     useEffect(() => {
-        var isFirst = true;
-        var lat, lng, locPosition;
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
                 center: new kakao.maps.LatLng(37.55634, 126.93635), // 지도의 중심좌표
@@ -131,52 +127,46 @@ const Home = ({ userInform }) => {
             });
         });
 
-        // 현재위치 마커 생성
-        var markerCurrent = new kakao.maps.MarkerImage(
-            './images/ic_marker_current.svg',
-            new kakao.maps.Size(32, 32),
-            { offset: new kakao.maps.Point(0, 0) });
+        // 현재위치
+        if (navigator.geolocation) {
 
-        var currentMarker = new kakao.maps.Marker({
-            image: markerCurrent,
-            clickable: true,
-        });
+            navigator.geolocation.getCurrentPosition(function (position) {
 
-        let locationRefresher = setInterval(() => {
-            if (navigator.geolocation) {
+                // 현재위치 지정
+                var lat = position.coords.latitude,
+                    lon = position.coords.longitude;
+                var locPosition = new kakao.maps.LatLng(lat, lon);
 
-                navigator.geolocation.getCurrentPosition(function (position) {
+                // 현재위치 마커 생성
+                var markerCurrent = new kakao.maps.MarkerImage(
+                    './images/ic_marker_current.svg',
+                    new kakao.maps.Size(32, 32),
+                    { offset: new kakao.maps.Point(0, 0) });
 
-                    // 현재위치 지정
-                    lat = position.coords.latitude;
-                    lng = position.coords.longitude;
-                    locPosition = new kakao.maps.LatLng(lat, lng);
-
-                    currentMarker.setPosition(locPosition);
-                    currentMarker.setMap(null);
-                    currentMarker.setMap(map);
-
-                    if (isFirst) {
-                        map.setCenter(locPosition);
-                        isFirst = false;
-                    }
+                var marker = new kakao.maps.Marker({
+                    position: locPosition,
+                    image: markerCurrent, // 마커이미지 설정
+                    clickable: true
                 });
+                marker.setMap(map);
+                map.setCenter(locPosition);
 
-            } else { // HTML5 GeoLocation 사용할 수 없을 때
-                var message = '위치정보를 사용할 수 없습니다. 다시 시도해주세요.'
-                alert(message)
-            }
-        }, 1000);
-        return () => { clearTimeout(locationRefresher) }
-    });
+                // TODO: 1초에 한 번씩 갱신
+            });
+
+        } else { // HTML5 GeoLocation 사용할 수 없을 때
+            var message = '위치정보를 사용할 수 없습니다. 다시 시도해주세요.'
+            alert(message)
+        }
+    }, [])
 
     return (
         <>
             <Header userInform={userInform} />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
                 <img className="btnLocation" src='./images/ic_location_orange.png' />
-                {tab === "smoke" && <SmokeTab />}
-                {tab === "nonsmoke" && <NonsmokeTab />}
+                {tab === "smoke" && <SmokeTab/>}
+                {tab === "nonsmoke" && <NonsmokeTab/>}
             </div>
         </>
     )
