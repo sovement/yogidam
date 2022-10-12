@@ -120,10 +120,7 @@ const Complaint = ({userInform}) => {
                 </div>
             </div>
             <div style={{ margin: '32px 16px' }}>
-                <div className='text Headline' style={{ marginBottom: '12px' }}>위치</div>
-                <div>
-                    
-                </div>
+               
                 {/* 지도부분 */}
                 <div id="map" style={{ height: "0", paddingBottom: '0%' }}></div>
 
