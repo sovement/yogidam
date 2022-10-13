@@ -24,7 +24,8 @@ const NonsmokeTab = () => {
                     서울특별시 서대문구 연세로5길 20
                 </div>
                 <div className='btnContainer'>
-                    <Link to="#" style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
+                    {/* TODO: 값 전달해야 함 */}
+                    <Link to="/complaint" style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
                         <div className='btnComplaint Text-Style'>
                             <img style={{ width: '18px', height: '18px' }} src='./images/ic_chat.svg' />
                             민원신청

@@ -126,7 +126,7 @@ const Home = ({ userInform }) => {
                 }
             });
         });
-
+        
         // 현재위치
         if (navigator.geolocation) {
 
@@ -164,9 +164,11 @@ const Home = ({ userInform }) => {
         <>
             <Header userInform={userInform} />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                <img className="btnLocation" src='./images/ic_location_orange.png' />
-                {tab === "smoke" && <SmokeTab/>}
-                {tab === "nonsmoke" && <NonsmokeTab/>}
+                <img className="btnLocation"
+                    src='./images/ic_location_orange.png'
+                    onClick={() => { }} />
+                {tab === "smoke" && <SmokeTab />}
+                {tab === "nonsmoke" && <NonsmokeTab />}
             </div>
         </>
     )
