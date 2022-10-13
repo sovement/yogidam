@@ -41,7 +41,9 @@ const SmokeTab = ({ data }) => {
                             길찾기
                         </div>
                     </a>
-                    <Link to="/help" style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
+                    <Link to="/help"
+                    style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}
+                    state={{ address: data.address }}>
                         <div className='btnHelp Text-Style'>
                             <img src='./images/ic_warning.svg' />
                             도움요청

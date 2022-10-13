@@ -33,8 +33,8 @@ const NonsmokeTab = ({data}) => {
                     {data.road}
                 </div>
                 <div className='btnContainer'>
-                    {/* TODO: 값 전달해야 함 */}
-                    <Link to="/complaint" style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
+                    <Link to="/complaint"
+                    style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
                         <div className='btnComplaint Text-Style'>
                             <img style={{ width: '18px', height: '18px' }} src='./images/ic_chat.svg' />
                             민원신청

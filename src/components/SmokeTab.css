@@ -20,11 +20,11 @@
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    margin-left: 16px;
 }
 
 .btnContainer {
     gap: 8px;
+    width: calc(100% - 16px);
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
