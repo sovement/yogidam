@@ -20,7 +20,16 @@ const NonsmokeTab = ({data}) => {
                     </span>
                 </div>
                 <div className='Footnote'
-                    style={{ color: 'var(--black-50)', margin: '4px 0 17px' }}>
+                    style={{ 
+                        display: 'inline-block',
+                        width: 'calc(100% - 16px)',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: 'inline-block',
+                        whiteSpace: 'nowrap',
+                        color: 'var(--black-50)', 
+                        margin: '4px 0 17px' }}>
                     {data.road}
                 </div>
                 <div className='btnContainer'>

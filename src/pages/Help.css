@@ -118,11 +118,12 @@
 }
 
 .complainButton {
-    width: 85%;
-    height: 19px;
-    position: fixed;
+    /* width: 85%;
     left: 50%;
     transform: translateX(-50%);
+    position: fixed; */
+    flex-grow: 1;
+    height: 19px;
     display: flex;
     justify-content: center;
     padding: 15px;

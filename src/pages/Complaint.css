@@ -1,5 +1,5 @@
 .message {
-    width: calc(100% - 32px);
+  flex-grow: 1;
     height: 250px;
     align-self: stretch;
     display: flex;
@@ -12,19 +12,26 @@
 }
 
 .btnSubmit {
-    width: 85%;
+    /* width: 85%; */
+    /* position: fixed; */
+    /* left:50%; */
+    /* transform: translateX(-50%); */
+    /* ? 위치 Fix시키는 것이 나을지 ? */
     height: 19px;
     bottom: 24px;
-    position: fixed;
-    left:50%;
+    margin: 0 16px;
+    flex-grow: 1;
     z-index: 2;
-    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     padding: 15px;
     border-radius: 4px;
     background-color: var(--orange-100);
     color: var(--white-100);
+}
+
+.btnContainer {
+  display: flex;
 }
 
 .check-position{

@@ -43,7 +43,7 @@ function Help() {
     const cancelConfirm = () => console.log("취소완료")
 
     const confirmNone = useConfirm(
-        function(){
+        function () {
             const field = {
                 timestamp: serverTimestamp(),
                 address: new GeoPoint(30.3, 50.1),
@@ -57,7 +57,7 @@ function Help() {
     );
 
     const confirmDirt = useConfirm(
-        function(){
+        function () {
             const field = {
                 timestamp: serverTimestamp(),
                 address: new GeoPoint(30.3, 50.1),
@@ -71,7 +71,7 @@ function Help() {
     );
 
     const confirmDifferent = useConfirm(
-        function(){
+        function () {
             const field = {
                 timestamp: serverTimestamp(),
                 address: new GeoPoint(30.3, 50.1),
@@ -121,12 +121,14 @@ function Help() {
                     </span>
                 </div>
             </div>
-            <Link to='/complaint'
-                style={{ textDecoration: "none", color: 'black' }}>
-                <div className="complainButton - Large-Lable">
-                    민원 신청
-                </div>
-            </Link>
+            <div style={{ margin: '0 16px' }}>
+                <Link to='/complaint'
+                    style={{ display: 'flex', textDecoration: "none", color: 'black' }}>
+                    <div className="complainButton - Large-Lable">
+                        민원 신청
+                    </div>
+                </Link>
+            </div>
         </div>
     )
 }

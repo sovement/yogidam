@@ -42,6 +42,7 @@ const MypageDetail = () => {
             <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
                 <img style={{
                     position: 'fixed',
+                    zIndex: '2',
                     top: '16px',
                     left: '16px',
                     width: '24px',

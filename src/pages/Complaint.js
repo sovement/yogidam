@@ -65,7 +65,7 @@ const Complaint = () => {
 
     const onChange = (event) => {
         const {
-          target: { value },
+            target: { value },
         } = event;
         setMessage(value);
     };
@@ -125,12 +125,16 @@ const Complaint = () => {
                 </div>
             </div>
 
-            <div style={{ margin: '32px 16px' }}>
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                margin: '32px 16px'
+            }}>
                 <div className='text Headline' style={{ marginBottom: '12px' }}>위치</div>
                 <div id="map" style={{ height: "0", paddingBottom: '40%' }}></div>
 
                 <div className='text Headline' style={{ marginTop: '24px' }}>민원내용</div>
-                <textarea 
+                <textarea
                     style={{ whiteSpace: 'pre-wrap' }}
                     className='message -Placeholder Placeholder-2'
                     onChange={onChange}
