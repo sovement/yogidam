@@ -1,7 +1,7 @@
 import './SmokeTab.css';
 import { Link } from 'react-router-dom';
 
-const SmokeTab = () => {
+const SmokeTab = ({data}) => {
     return (
         <div className="smokeTab">
             <img style={{
@@ -9,19 +9,19 @@ const SmokeTab = () => {
                 height: '94px',
                 borderRadius: '10px'
             }}
-                src='./images/kakao_login_large_wide.png' />
+                src={data.image} />
             <div className='textContainer'>
                 <div style={{ display: 'flex' }}>
                     <div className="smokeBadge small_text">
                         흡연
                     </div>
                     <span className='\- Headline'>
-                        &nbsp;신촌 김덕후의차돌조 앞
+                        &nbsp;{data.title}
                     </span>
                 </div>
                 <div className='Footnote'
                     style={{ color: 'var(--black-50)', margin: '4px 0 17px' }}>
-                    서울특별시 서대문구 연세로5길 20
+                    {data.road}
                 </div>
                 <div className='btnContainer'>
                     <a href='https://map.kakao.com/link/to/신촌&nbsp;김덕후의차돌조&nbsp;앞,37.402056,127.108212'

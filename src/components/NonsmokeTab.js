@@ -1,7 +1,7 @@
 import './NonsmokeTab.css';
 import { Link } from 'react-router-dom';
 
-const NonsmokeTab = () => {
+const NonsmokeTab = ({data}) => {
     return (
         <div className="nonsmokeTab">
             <img style={{
@@ -9,19 +9,19 @@ const NonsmokeTab = () => {
                 height: '94px',
                 borderRadius: '10px'
             }}
-                src='./images/kakao_login_large_wide.png' />
+                src={data.image} />
             <div className='textContainer'>
                 <div style={{ display: 'flex' }}>
                     <div className="nonsmokeBadge small_text">
                         금연
                     </div>
                     <span className='\- Headline'>
-                        &nbsp;신촌 김덕후의차돌조 앞
+                        &nbsp;{data.title}
                     </span>
                 </div>
                 <div className='Footnote'
                     style={{ color: 'var(--black-50)', margin: '4px 0 17px' }}>
-                    서울특별시 서대문구 연세로5길 20
+                    {data.road}
                 </div>
                 <div className='btnContainer'>
                     {/* TODO: 값 전달해야 함 */}
