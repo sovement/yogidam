@@ -1,7 +1,6 @@
 .text-rules {
     display: flex;
-
-    width: 390px;
+    width: auto;
     height: auto;
     padding: 24px 16px 36px;
     gap: 10px;
@@ -9,11 +8,12 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    /* border:solid; */
 
 }
 
 .text-rules-font {
-    width: 358px;
+    width: auto;
     height: auto;
     flex-grow: 0;
     font-family: Pretendard;
