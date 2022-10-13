@@ -130,8 +130,7 @@ const Home = () => {
                 }
             });
         });
-    });
-
+        
         // 현재위치
         if (navigator.geolocation) {
 

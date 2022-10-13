@@ -24,13 +24,15 @@ const SmokeTab = ({data}) => {
                     {data.road}
                 </div>
                 <div className='btnContainer'>
-                    <Link to="#" style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
+                    <a href='https://map.kakao.com/link/to/신촌&nbsp;김덕후의차돌조&nbsp;앞,37.402056,127.108212'
+                    target='_blank'
+                    style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
                         <div className='btnNavi Text-Style'>
                             <img src='./images/ic_direction.svg'></img>
                             길찾기
                         </div>
-                    </Link>
-                    <Link to="#" style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
+                    </a>
+                    <Link to="/help" style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
                         <div className='btnHelp Text-Style'>
                             <img src='./images/ic_warning.svg' />
                             도움요청
