@@ -26,3 +26,32 @@
     background-color: var(--orange-100);
     color: var(--white-100);
 }
+
+.check-position{
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    margin-left: 15px;
+    margin-right: 5px;
+    padding-top: 2px;
+    justify-content: center;
+  }
+
+.text-address{
+  height: 42px;
+  width: 93%;
+  margin-left: 2%;
+
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 10px;
+  opacity: 0.5;
+  border-radius: 4px;
+  border: solid 1px rgba(34, 34, 34, 0.15);
+  background-color: var(--white-100);
+}
