@@ -9,7 +9,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 
 const { Kakao } = window;
 
-const Login = ({userInform, setUserInform}) => {
+const Login = () => {
     const history = useHistory();
 
     useEffect(() => {
@@ -54,12 +54,10 @@ const Login = ({userInform, setUserInform}) => {
             const user = auth.currentUser;
 
             if (user !== null) {
-            setUserInform({
-                displayName: user.displayName,
-                email: user.email,
-                photoURL: user.photoURL,
-                uid: user.uid,
-            })
+                sessionStorage.setItem("displayName", user.displayName);
+                sessionStorage.setItem("email", user.email);
+                sessionStorage.setItem("photoURL", user.photoURL);
+                sessionStorage.setItem("uid", user.uid);
                 createUserTable(user, sessionStorage.getItem("kakao_token"));
             }
             }).then(history.push("/"))

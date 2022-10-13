@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'
 
-const Header = ({userInform}) => {
+const Header = () => {
 
     const [isChecked, setChecked] = useState(false);
 
@@ -16,7 +16,7 @@ const Header = ({userInform}) => {
                 <img src="./images/ic_menu.svg" />
             </label>
             <div id="sideMenu" onClick={() => { setChecked(!isChecked) }}>
-                {userInform == null ? (
+                {sessionStorage.getItem("kakao_token") == null ? (
                     <Link to="/login" style={{ textDecoration: 'none', color: 'black' }}>
                         <div className="tabProfile">
                             {/* <div width={80} height={80}> */}
@@ -29,8 +29,8 @@ const Header = ({userInform}) => {
                     <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
                         <div className="tabProfile">
                             {/* <div width={80} height={80}> */}
-                            <img className="profilePicture" src={userInform.photoURL} />
-                            {userInform.displayName}
+                            <img className="profilePicture" src={sessionStorage.getItem("photoURL")} />
+                            {sessionStorage.getItem("displayName")}
                             {/* </div> */}
                         </div>
                     </Link>

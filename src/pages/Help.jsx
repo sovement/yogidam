@@ -1,12 +1,19 @@
+import { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import './Help.css';
 import { db } from "../firebase";
 import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 
-function Help({userInform}) {
-
+function Help() {
     const history = useHistory();
+
+    useEffect(() => {
+        if (sessionStorage.getItem("kakao_token") == null) {
+            history.push('/login');
+        }
+    })
+
     const useConfirm = (onConfirm, onCancel, message = "Are you sure?") => {
         if (!onConfirm && typeof onConfirm !== "function") {
             return;
@@ -40,7 +47,7 @@ function Help({userInform}) {
             const field = {
                 timestamp: serverTimestamp(),
                 address: new GeoPoint(30.3, 50.1),
-                who: userInform.uid,
+                who: sessionStorage.getItem("uid"),
             };
             addDoc(collection(db, "help", "help", "non_here"), field);
             applyConfirm();
@@ -54,7 +61,7 @@ function Help({userInform}) {
             const field = {
                 timestamp: serverTimestamp(),
                 address: new GeoPoint(30.3, 50.1),
-                who: userInform.uid,
+                who: sessionStorage.getItem("uid"),
             };
             addDoc(collection(db, "help", "help", "dirty"), field);
             applyConfirm();
@@ -68,7 +75,7 @@ function Help({userInform}) {
             const field = {
                 timestamp: serverTimestamp(),
                 address: new GeoPoint(30.3, 50.1),
-                who: userInform.uid,
+                who: sessionStorage.getItem("uid"),
             };
             addDoc(collection(db, "help", "help", "different"), field);
             applyConfirm();

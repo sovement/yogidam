@@ -4,10 +4,12 @@ import Header from '../components/Header';
 import SmokeTab from '../components/SmokeTab';
 import NonsmokeTab from '../components/NonsmokeTab';
 import './Home.css';
+import { db } from '../firebase';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
-const Home = ({ userInform }) => {
+const Home = () => {
 
-    const [tab, setTab] = useState("none");
+    const [tab, setTab] = useState({"state": "null"});
 
     useEffect(() => {
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
@@ -28,29 +30,20 @@ const Home = ({ userInform }) => {
             markerNonsmokeDefault = new kakao.maps.MarkerImage('./images/ic_marker_nonsmoke_default.png', imageSize, imageOption),
             markerNonsmokePressed = new kakao.maps.MarkerImage('./images/ic_marker_nonsmoke_pressed.png', imageSize, imageOption);
 
-        // 구역 위치
-        var posSmoke = [ // TODO: 흡연구역 위치 저장
-            new kakao.maps.LatLng(37.55630, 126.93635),
-            new kakao.maps.LatLng(37.55640, 126.93635),
-            new kakao.maps.LatLng(37.55650, 126.93635),
-            new kakao.maps.LatLng(37.55660, 126.93635)
-        ],
-            posNonsmoke = [ // TODO: 금연구역 위치 저장
-                new kakao.maps.LatLng(37.55530, 126.93635),
-                new kakao.maps.LatLng(37.55540, 126.93635),
-                new kakao.maps.LatLng(37.55550, 126.93635),
-                new kakao.maps.LatLng(37.55560, 126.93635)
-            ],
-            selectedMarker = null,
-            selectedMarkerType = "";
 
-        // 흡연구역 마커 생성
-        posSmoke.forEach(function (position) {
+        // 구역 위치
+        var selectedMarker = null, selectedMarkerType = "";
+
+        const q = query(collection(db, "smokeInform"), where("smoke", "==", true));
+            
+        const smokeSnapshot = getDocs(q);
+        smokeSnapshot.then((snapshot) => {
+            snapshot.forEach((doc) => {
             var marker = new kakao.maps.Marker({
-                position: position,
+                position: new kakao.maps.LatLng(doc.data().address.latitude, doc.data().address.longitude),
                 image: markerSmokeDefault, // 마커이미지 설정
                 clickable: true
-            });
+            })
 
             marker.setMap(map);
 
@@ -65,14 +58,17 @@ const Home = ({ userInform }) => {
                     marker.setImage(markerSmokePressed);
 
                     // 흡연구역 정보 탭 띄우기
-                    setTab("smoke");
+                    setTab({
+                        "state": "smoke",
+                        "data": doc.data()
+                    });
 
 
                     selectedMarker = marker;
                     selectedMarkerType = "smoke";
                 }
                 else if (selectedMarker === marker) {
-                    setTab("none");
+                    setTab({"state": "none"});
                     if (selectedMarkerType === "smoke") {
                         !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
                     } else {
@@ -85,11 +81,16 @@ const Home = ({ userInform }) => {
                 }
             });
         });
-
+    });
         // 금연구역 마커 생성
-        posNonsmoke.forEach(function (position) {
+
+        const q2 = query(collection(db, "smokeInform"), where("smoke", "==", false));
+            
+        const nonsmokeSnapshot = getDocs(q2);
+        nonsmokeSnapshot.then((snapshot) => {
+            snapshot.forEach((doc) => {
             var marker = new kakao.maps.Marker({
-                position: position,
+                position: new kakao.maps.LatLng(doc.data().address.latitude, doc.data().address.longitude),
                 image: markerNonsmokeDefault, // 마커이미지 설정
                 clickable: true
             });
@@ -107,13 +108,16 @@ const Home = ({ userInform }) => {
                     marker.setImage(markerNonsmokePressed);
 
                     // 금연구역 정보 탭 띄우기
-                    setTab("nonsmoke");
+                    setTab({
+                        "state": "nonsmoke",
+                        "data": doc.data()
+                    });
 
                     selectedMarker = marker;
                     selectedMarkerType = "nonsmoke"
                 }
                 else if (selectedMarker === marker) {
-                    setTab("none");
+                    setTab({"state": "none"});
                     if (selectedMarkerType === "smoke") {
                         !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
                     } else {
@@ -126,6 +130,7 @@ const Home = ({ userInform }) => {
                 }
             });
         });
+    });
 
         // 현재위치
         if (navigator.geolocation) {
@@ -162,11 +167,11 @@ const Home = ({ userInform }) => {
 
     return (
         <>
-            <Header userInform={userInform} />
+            <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
                 <img className="btnLocation" src='./images/ic_location_orange.png' />
-                {tab === "smoke" && <SmokeTab/>}
-                {tab === "nonsmoke" && <NonsmokeTab/>}
+                {tab.state === "smoke" && <SmokeTab data={tab.data} />}
+                {tab.state === "nonsmoke" && <NonsmokeTab data={tab.data} />}
             </div>
         </>
     )

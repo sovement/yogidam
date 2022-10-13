@@ -1,15 +1,22 @@
 /*global kakao*/
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import { db } from '../firebase';
 import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 import './Complaint.css';
 
-const Complaint = ({userInform}) => {
+const Complaint = () => {
+    const history = useHistory();
     const [message, setMessage] = useState('');
+    const [lat, setLat] = useState(null);
+    const [lon, setLon] = useState(null);
 
     useEffect(() => {
+        if (sessionStorage.getItem("kakao_token") == null) {
+            history.push('/login');
+        }
+
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
                 draggable: false,
@@ -29,6 +36,9 @@ const Complaint = ({userInform}) => {
                 var lat = position.coords.latitude,
                     lon = position.coords.longitude;
                 var locPosition = new kakao.maps.LatLng(lat, lon);
+
+                setLat(lat);
+                setLon(lon);
 
                 // 현재위치 마커 생성
                 var markerCurrent = new kakao.maps.MarkerImage(
@@ -63,12 +73,44 @@ const Complaint = ({userInform}) => {
     const sendComplaint = () => {
         const field = {
             timestamp: serverTimestamp(),
-            address: new GeoPoint(30.3, 50.1),
-            who: userInform.uid,
+            address: new GeoPoint(lat, lon),
+            who: sessionStorage.getItem("uid"),
             message: message
         };
-        addDoc(collection(db, "help", "help", "compaint"), field);
+        if (message === "") {
+            window.confirm("민원 내용을 입력해주세요.")
+        } else {
+            addDoc(collection(db, "help", "help", "compaint"), field);
+            history.push('/complete');
+        }
     }
+
+    const cancelConfirm = () => console.log("취소완료")
+
+    const useConfirm = (onConfirm, onCancel, message = "Are you sure?") => {
+        if (!onConfirm && typeof onConfirm !== "function") {
+            return;
+        }
+
+        if (!onCancel && typeof onCancel !== "function") {
+            return;
+        }
+
+        const confirmAction = () => {
+            if (window.confirm(message)) {
+
+                onConfirm();
+
+            } else {
+                onCancel();
+            }
+        };
+
+        return confirmAction;
+    };
+
+    const complaintConfirm = useConfirm(sendComplaint, cancelConfirm, "민원을 접수하시겠습니까?");
+
 
     return (
         <>
@@ -103,11 +145,9 @@ const Complaint = ({userInform}) => {
                 </textarea>
             </div>
 
-            <Link to="/complete" style={{ textDecoration: 'none', color: 'black' }}>
-                <div className='btnSubmit \- Large-Lable' onClick={sendComplaint}>
-                    민원 신청
-                </div>
-            </Link>
+            <div className='btnSubmit \- Large-Lable' onClick={complaintConfirm}>
+                민원 신청
+            </div>
         </>
     );
 }

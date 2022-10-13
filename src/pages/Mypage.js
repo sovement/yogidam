@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import styles from './Mypage.module.css';
 
-const Mypage = ({userInform}) => {
+const Mypage = () => {
     return (
         <>
-        <Header userInform={userInform} />
+        <Header />
         <Link to="/mypage/detail" style={{ textDecoration: 'none', color: 'black' }}>
             <div className={styles.nameTab}>
-                <img className={styles.profile} src={userInform.photoURL} alt="profile" />
+                <img className={styles.profile} src={sessionStorage.getItem("photoURL")} alt="profile" />
                 <div>
-                    <div className={styles.name}>{userInform.displayName}</div>
-                    <div className={styles.email}>{userInform.email.slice(-13) === '@sovement.com' ? '이메일 정보가 없습니다.' : userInform.email}</div>
+                    <div className={styles.name}>{sessionStorage.getItem("displayName")}</div>
+                    <div className={styles.email}>{sessionStorage.getItem("email").slice(-13) === '@sovement.com' ? '이메일 정보가 없습니다.' : sessionStorage.getItem("email")}</div>
                 </div>
             </div>
             <div className={styles.divLine} />
