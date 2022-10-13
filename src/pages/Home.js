@@ -9,7 +9,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const Home = () => {
 
-    const [tab, setTab] = useState({"state": "null"});
+    const [tab, setTab] = useState({ "state": "null" });
 
     useEffect(() => {
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
@@ -35,102 +35,103 @@ const Home = () => {
         var selectedMarker = null, selectedMarkerType = "";
 
         const q = query(collection(db, "smokeInform"), where("smoke", "==", true));
-            
+
         const smokeSnapshot = getDocs(q);
         smokeSnapshot.then((snapshot) => {
             snapshot.forEach((doc) => {
-            var marker = new kakao.maps.Marker({
-                position: new kakao.maps.LatLng(doc.data().address.latitude, doc.data().address.longitude),
-                image: markerSmokeDefault, // 마커이미지 설정
-                clickable: true
-            })
+                var marker = new kakao.maps.Marker({
+                    position: new kakao.maps.LatLng(doc.data().address.latitude, doc.data().address.longitude),
+                    image: markerSmokeDefault, // 마커이미지 설정
+                    clickable: true
+                })
 
-            marker.setMap(map);
+                marker.setMap(map);
 
-            // 마커 클릭 이벤트
-            kakao.maps.event.addListener(marker, 'click', function () {
-                if (!selectedMarker || selectedMarker !== marker) {
-                    if (selectedMarkerType === "smoke") {
-                        !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
-                    } else {
-                        !!selectedMarker && selectedMarker.setImage(markerNonsmokeDefault);
+                // 마커 클릭 이벤트
+                kakao.maps.event.addListener(marker, 'click', function () {
+                    if (!selectedMarker || selectedMarker !== marker) {
+                        if (selectedMarkerType === "smoke") {
+                            !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
+                        } else {
+                            !!selectedMarker && selectedMarker.setImage(markerNonsmokeDefault);
+                        }
+                        marker.setImage(markerSmokePressed);
+
+                        // 흡연구역 정보 탭 띄우기
+                        setTab({
+                            "state": "smoke",
+                            "data": doc.data()
+                        });
+
+
+                        selectedMarker = marker;
+                        selectedMarkerType = "smoke";
                     }
-                    marker.setImage(markerSmokePressed);
+                    else if (selectedMarker === marker) {
+                        setTab({ "state": "none" });
+                        if (selectedMarkerType === "smoke") {
+                            !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
+                        } else {
+                            !!selectedMarker && selectedMarker.setImage(markerNonsmokeDefault);
+                        }
+                        marker.setImage(markerSmokeDefault);
 
-                    // 흡연구역 정보 탭 띄우기
-                    setTab({
-                        "state": "smoke",
-                        "data": doc.data()
-                    });
-
-
-                    selectedMarker = marker;
-                    selectedMarkerType = "smoke";
-                }
-                else if (selectedMarker === marker) {
-                    setTab({"state": "none"});
-                    if (selectedMarkerType === "smoke") {
-                        !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
-                    } else {
-                        !!selectedMarker && selectedMarker.setImage(markerNonsmokeDefault);
+                        selectedMarker = null;
+                        selectedMarkerType = "";
                     }
-                    marker.setImage(markerSmokeDefault);
-
-                    selectedMarker = null;
-                    selectedMarkerType = "";
-                }
+                });
             });
         });
-    });
         // 금연구역 마커 생성
 
         const q2 = query(collection(db, "smokeInform"), where("smoke", "==", false));
-            
+
         const nonsmokeSnapshot = getDocs(q2);
         nonsmokeSnapshot.then((snapshot) => {
             snapshot.forEach((doc) => {
-            var marker = new kakao.maps.Marker({
-                position: new kakao.maps.LatLng(doc.data().address.latitude, doc.data().address.longitude),
-                image: markerNonsmokeDefault, // 마커이미지 설정
-                clickable: true
-            });
+                var marker = new kakao.maps.Marker({
+                    position: new kakao.maps.LatLng(doc.data().address.latitude, doc.data().address.longitude),
+                    image: markerNonsmokeDefault, // 마커이미지 설정
+                    clickable: true
+                });
 
-            marker.setMap(map);
+                marker.setMap(map);
 
-            // 마커 클릭 이벤트
-            kakao.maps.event.addListener(marker, 'click', function () {
-                if (!selectedMarker || selectedMarker !== marker) {
-                    if (selectedMarkerType === "smoke") {
-                        !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
-                    } else {
-                        !!selectedMarker && selectedMarker.setImage(markerNonsmokeDefault);
+                // 마커 클릭 이벤트
+                kakao.maps.event.addListener(marker, 'click', function () {
+                    if (!selectedMarker || selectedMarker !== marker) {
+                        if (selectedMarkerType === "smoke") {
+                            !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
+                        } else {
+                            !!selectedMarker && selectedMarker.setImage(markerNonsmokeDefault);
+                        }
+                        marker.setImage(markerNonsmokePressed);
+
+                        // 금연구역 정보 탭 띄우기
+                        setTab({
+                            "state": "nonsmoke",
+                            "data": doc.data()
+                        });
+
+                        selectedMarker = marker;
+                        selectedMarkerType = "nonsmoke"
                     }
-                    marker.setImage(markerNonsmokePressed);
+                    else if (selectedMarker === marker) {
+                        setTab({ "state": "none" });
+                        if (selectedMarkerType === "smoke") {
+                            !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
+                        } else {
+                            !!selectedMarker && selectedMarker.setImage(markerNonsmokeDefault);
+                        }
+                        marker.setImage(markerNonsmokeDefault);
 
-                    // 금연구역 정보 탭 띄우기
-                    setTab({
-                        "state": "nonsmoke",
-                        "data": doc.data()
-                    });
-
-                    selectedMarker = marker;
-                    selectedMarkerType = "nonsmoke"
-                }
-                else if (selectedMarker === marker) {
-                    setTab({"state": "none"});
-                    if (selectedMarkerType === "smoke") {
-                        !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
-                    } else {
-                        !!selectedMarker && selectedMarker.setImage(markerNonsmokeDefault);
+                        selectedMarker = null;
+                        selectedMarkerType = "";
                     }
-                    marker.setImage(markerNonsmokeDefault);
-
-                    selectedMarker = null;
-                    selectedMarkerType = "";
-                }
+                });
             });
         });
-        
+
         // 현재위치
         if (navigator.geolocation) {
 
