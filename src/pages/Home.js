@@ -6,6 +6,7 @@ import NonsmokeTab from '../components/NonsmokeTab';
 import './Home.css';
 import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import Banner from '../components/Banner';
 
 const Home = () => {
 
@@ -168,6 +169,7 @@ const Home = () => {
     return (
         <>
             <Header />
+            <Banner />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
                 <img className="btnLocation" src='./images/ic_location_orange.png' />
                 {tab.state === "smoke" && <SmokeTab data={tab.data} />}
