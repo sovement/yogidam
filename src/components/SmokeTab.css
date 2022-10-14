@@ -1,6 +1,7 @@
 .smokeTab {
     /* width: 85%; */
     height: 94px;
+    flex-basis: 0;
     flex-grow: 1;
     /* position: fixed; */
     display: flex;

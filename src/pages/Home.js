@@ -198,7 +198,7 @@ const Home = () => {
                         btnLocation.src = './images/ic_location_orange.png';
                         test();
                     }} />
-                <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', width: '100%' }}>
+                <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', flexDirection: 'column', width: '100%' }}>
                     {tab.state === "smoke" && <SmokeTab data={tab.data} />}
                     {tab.state === "nonsmoke" && <NonsmokeTab data={tab.data} />}
                 </div>
