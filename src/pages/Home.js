@@ -165,9 +165,9 @@ const Home = () => {
         }
 
         // 지도 움직였을 때
-        kakao.maps.event.addListener(map, 'dragstart', function() {
+        kakao.maps.event.addListener(map, 'dragstart', function () {
             var btnLocation = document.getElementById('btnLocation');
-            btnLocation.src='./images/ic_location_black.png';
+            btnLocation.src = './images/ic_location_black.png';
         });
     }, [])
 
@@ -175,7 +175,9 @@ const Home = () => {
         <>
             <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                    <img id="btnLocation" className="btnLocation" src='./images/ic_location_orange.png' />
+                <img id="btnLocation"
+                    className="btnLocation"
+                    src='./images/ic_location_orange.png' />
                 <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', width: '100%' }}>
                     {tab.state === "smoke" && <SmokeTab data={tab.data} />}
                     {tab.state === "nonsmoke" && <NonsmokeTab data={tab.data} />}

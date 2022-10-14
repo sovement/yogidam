@@ -1,7 +1,7 @@
 .btnLocation {
     width:44px;
     height:44px;
-    z-index: 2;
+    z-index: 4;
     right:12px;
     bottom:12px;
     position: fixed;
