@@ -38,15 +38,12 @@ const Login = () => {
             .then((data) => {
             sendToken(data)
             })
-        } else {
-        console.log("No AuthorizeCodeFromKakao")
         }
     }, [])
 
     const sendToken = async (data) => {
-        axios.post(`http://localhost:8000/verifyToken`, { token: data.access_token })
+        await axios.post(`https://sovement-server.herokuapp.com/verifyToken`, { token: data.access_token })
         .then(function (res) {
-            console.log(res)
             signInWithCustomToken(auth, res.data.firebase_token)
             .then((userCredential) => {
             sessionStorage.setItem("kakao_token", data.access_token)

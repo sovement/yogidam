@@ -1,17 +1,18 @@
-import { getAuth } from "firebase/auth";
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import styles from './MypageDetail.module.css';
-import { useHistory } from "react-router-dom";
 import { auth, db } from '../firebase';
 import { deleteUser } from 'firebase/auth';
 import { doc, deleteDoc } from 'firebase/firestore';
 
-
-
-
 const MypageDetail = ({ userInform, setUserInform }) => {
     const history = useHistory();
 
+    useEffect(() => {
+        if (sessionStorage.getItem("kakao_token") == null) {
+            history.push('/login');
+        }
+    }, []);
     const useConfirm = (onConfirm, onCancel, message = "Are you sure?") => {
         if (!onConfirm && typeof onConfirm !== "function") {
             return;
@@ -58,8 +59,6 @@ const MypageDetail = ({ userInform, setUserInform }) => {
         cancelConfirm,
         "회원 탈퇴 하시겠습니까?"
     )
-
-
 
     const logout = () => {
         fetch("https://kapi.kakao.com/v1/user/logout",{
