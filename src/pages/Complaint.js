@@ -1,22 +1,43 @@
 /*global kakao*/
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { db } from '../firebase';
 import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 import './Complaint.css';
 
-const Complaint = () => {
-    const history = useHistory();
+
+import Checkbox from '../components/Checkbox';
+
+
+const Complaint = ({userInform}) => {
     const [message, setMessage] = useState('');
-    const [lat, setLat] = useState(null);
-    const [lon, setLon] = useState(null);
+    const [isCheckingBox, setIsCheckingBox] = useState(false);
+    const [isAddressBox, setIsAddressBox] = useState(false);
+
+
+    const changeState = (e) => {
+        if (e.target.checked){
+            setIsCheckingBox(true)
+            console.log('지도 주소 활성')
+        }else{
+            setIsCheckingBox(false)
+            console.log('지도 주소 비활성')
+        }
+    }
+
+    useEffect((e)=>{
+        if(isCheckingBox){
+            setIsAddressBox(true)
+            console.log('주소창 활성')
+        }else{
+            setIsAddressBox(false)
+            console.log('주소창 비활성')
+        };
+    })
+
 
     useEffect(() => {
-        if (sessionStorage.getItem("kakao_token") == null) {
-            history.push('/login');
-        }
-
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
                 draggable: false,
@@ -36,9 +57,6 @@ const Complaint = () => {
                 var lat = position.coords.latitude,
                     lon = position.coords.longitude;
                 var locPosition = new kakao.maps.LatLng(lat, lon);
-
-                setLat(lat);
-                setLon(lon);
 
                 // 현재위치 마커 생성
                 var markerCurrent = new kakao.maps.MarkerImage(
@@ -65,7 +83,7 @@ const Complaint = () => {
 
     const onChange = (event) => {
         const {
-            target: { value },
+          target: { value },
         } = event;
         setMessage(value);
     };
@@ -73,44 +91,16 @@ const Complaint = () => {
     const sendComplaint = () => {
         const field = {
             timestamp: serverTimestamp(),
-            address: new GeoPoint(lat, lon),
-            who: sessionStorage.getItem("uid"),
+            address: new GeoPoint(30.3, 50.1),
+            who: userInform.uid,
             message: message
+            
         };
-        if (message === "") {
-            window.confirm("민원 내용을 입력해주세요.")
-        } else {
-            addDoc(collection(db, "help", "help", "compaint"), field);
-            history.push('/complete');
-        }
+        
+        addDoc(collection(db, "help", "help", "compaint"), field);
+       
+        
     }
-
-    const cancelConfirm = () => console.log("취소완료")
-
-    const useConfirm = (onConfirm, onCancel, message = "Are you sure?") => {
-        if (!onConfirm && typeof onConfirm !== "function") {
-            return;
-        }
-
-        if (!onCancel && typeof onCancel !== "function") {
-            return;
-        }
-
-        const confirmAction = () => {
-            if (window.confirm(message)) {
-
-                onConfirm();
-
-            } else {
-                onCancel();
-            }
-        };
-
-        return confirmAction;
-    };
-
-    const complaintConfirm = useConfirm(sendComplaint, cancelConfirm, "민원을 접수하시겠습니까?");
-
 
     return (
         <>
@@ -124,17 +114,24 @@ const Complaint = () => {
                     상생 가능한 도시 조성을 위해 소중한 한마디 부탁드립니다.
                 </div>
             </div>
-
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                margin: '32px 16px'
-            }}>
-                <div className='text Headline' style={{ marginBottom: '12px' }}>위치</div>
-                <div id="map" style={{ height: "0", paddingBottom: '40%' }}></div>
+            <div>
+                
+                {/* 체크박스 선택하면 활성 비활성 */}
+                <div className='text Headline' style={{ marginBottom: '12px' }}>
+                    {/* 기본 체크박스 */}
+                    {/* <input type='checkbox' className="check-position" onClick={e=> changeState(e)} checked={isCheckingBox}></input><span className="text-position">위치</span> */}
+                </div>
+                <Checkbox text="위치"/>
+             
+                
+            </div>
+            <div style={{ margin: '32px 16px' }}>
+               
+                {/* 지도부분 */}
+                <div id="map" style={{ height: "0", paddingBottom: '0%' }}></div>
 
                 <div className='text Headline' style={{ marginTop: '24px' }}>민원내용</div>
-                <textarea
+                <textarea 
                     style={{ whiteSpace: 'pre-wrap' }}
                     className='message -Placeholder Placeholder-2'
                     onChange={onChange}
@@ -149,9 +146,11 @@ const Complaint = () => {
                 </textarea>
             </div>
 
-            <div className='btnSubmit \- Large-Lable' onClick={complaintConfirm}>
-                민원 신청
-            </div>
+            <Link to="/complete" style={{ textDecoration: 'none', color: 'black' }}>
+                <div className='btnSubmit \- Large-Lable' onClick={sendComplaint}>
+                    민원 신청
+                </div>
+            </Link>
         </>
     );
 }

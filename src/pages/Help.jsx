@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import './Help.css';
 import { db } from "../firebase";
@@ -7,6 +7,9 @@ import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestor
 
 function Help() {
     const history = useHistory();
+
+    const location = useLocation();
+    console.log(location);
 
     useEffect(() => {
         if (sessionStorage.getItem("kakao_token") == null) {
@@ -37,7 +40,10 @@ function Help() {
     };
 
     const applyConfirm = () => {
-        history.push('/complete')
+        history.push({
+            pathname: '/complete',
+            state: 'help',
+        });
         console.log("접수완료")
     }
     const cancelConfirm = () => console.log("취소완료")
@@ -46,7 +52,7 @@ function Help() {
         function () {
             const field = {
                 timestamp: serverTimestamp(),
-                address: new GeoPoint(30.3, 50.1),
+                // address: new GeoPoint(lat, lng),
                 who: sessionStorage.getItem("uid"),
             };
             addDoc(collection(db, "help", "help", "non_here"), field);
@@ -60,7 +66,7 @@ function Help() {
         function () {
             const field = {
                 timestamp: serverTimestamp(),
-                address: new GeoPoint(30.3, 50.1),
+                // address: new GeoPoint(lat, lng),
                 who: sessionStorage.getItem("uid"),
             };
             addDoc(collection(db, "help", "help", "dirty"), field);
@@ -74,7 +80,7 @@ function Help() {
         function () {
             const field = {
                 timestamp: serverTimestamp(),
-                address: new GeoPoint(30.3, 50.1),
+                // address: new GeoPoint(lat, lng),
                 who: sessionStorage.getItem("uid"),
             };
             addDoc(collection(db, "help", "help", "different"), field);

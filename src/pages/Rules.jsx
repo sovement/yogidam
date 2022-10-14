@@ -15,7 +15,7 @@ function Rules() {
                     height: '24px',
                 }}
                     src="../images/ic_arrow_back.svg" /> </Link>
-            < div className='headerContainer' > <span className="text Headline" > 프로필 정보</span></div>
+            < div className='headerContainer' > <span className="text Headline" >이용약관</span></div>
             < div className="text-rules" > <span class="text-rules-font" > 개인위치정보사업 이용약관(안)<br></br><br></br> 제1조(목적)본 약관은(주)소브먼트(이하 “회사”라고 합니다)가 개인위치정보사업 약관에 동의한 개인위치정보주체(이하 “회원”이라고 합니다)의 개인위치정보를 수집하고,
                 위치정보사업자의 지위에서 「위치정보의 보호 및 이용 등에 관한 법률」(이하 “위치정보법”이라 합니다)의 규정에 따라 위치기반서비스 사업자에게 회원의 개인위치정보를 제공함에 있어 회사와 회원의 권리·의무 및 기타 필요한 사항을 규정함을 목적으로 합니다.<br></br><br></br> 제2조(이용약관의 효력 및 변경)① 본 약관은 개인위치정보사업의 고객 또는 개인위치정보주체가 본 약관에 동의하고 회사 소정의 절차에 따라 위치정보사업의 이용자로 등록함으로써 효력이 발생합니다.<br></br> ② 회원이 온라인에서 본 약관의 "동의하기" 버튼을 클릭하였을 경우 본 약관의 내용을 모두 읽고 이를 충분히 이해하였으며,
                 그 적용에 동의한 것으로 봅니다.<br></br> ③ 회사는 위치정보사업의 변경사항을 반영하기 위하여 필요한 경우 등에는 위치정보의 보호 및 이용 등에 관한 법률,
