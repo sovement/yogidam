@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { db } from '../firebase';
 import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 import './Complaint.css';
+import Checkbox from "./components/Checkbox";
 
 const Complaint = () => {
     const history = useHistory();
