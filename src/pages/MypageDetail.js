@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { auth, db } from '../firebase';
 import { deleteUser } from 'firebase/auth';
 import { doc, deleteDoc } from 'firebase/firestore';
+import { useEffect } from 'react';
 
 const MypageDetail = () => {
     const history = useHistory();

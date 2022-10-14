@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Header from "../components/Header";
 import styles from './Mypage.module.css';
+import { useEffect } from "react";
 
 const Mypage = () => {
+
     return (
         <>
         <Header />

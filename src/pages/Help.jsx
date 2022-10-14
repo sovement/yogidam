@@ -40,7 +40,10 @@ function Help() {
     };
 
     const applyConfirm = () => {
-        history.push('/complete')
+        history.push({
+            pathname: '/complete',
+            state: 'help',
+        });
         console.log("접수완료")
     }
     const cancelConfirm = () => console.log("취소완료")

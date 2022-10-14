@@ -81,7 +81,10 @@ const Complaint = () => {
             window.confirm("민원 내용을 입력해주세요.")
         } else {
             addDoc(collection(db, "help", "help", "compaint"), field);
-            history.push('/complete');
+            history.push({
+                pathname: '/complete',
+                state: 'complaint',
+            });
         }
     }
 
