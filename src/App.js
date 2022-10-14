@@ -120,14 +120,16 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <div>
-          {routes.map((route) => (
-            <Route key={route.path} exact path={route.path}>
-              <route.component userInform={userInform} setUserInform={setUserInform} />
-            </Route>
-          )
-          )}
-        </div>
+        <>
+          <div>
+            {routes.map((route) => (
+              <Route key={route.path} exact path={route.path}>
+                <route.component userInform={userInform} setUserInform={setUserInform} />
+              </Route>
+            )
+            )}
+          </div>
+        </>
       </Switch>
     </Router>
   );

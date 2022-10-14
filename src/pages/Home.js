@@ -11,8 +11,19 @@ import Banner from '../components/Banner';
 const Home = () => {
 
     const [tab, setTab] = useState({ "state": "null" });
+    var lat, lng;
+
+    const setBtnLocationUp = () => {
+        const btnLocation = document.getElementById('btnLocation');
+        btnLocation.style.bottom = '151px';
+    }
+    const setBtnLocationDown = () => {
+        const btnLocation = document.getElementById('btnLocation');
+        btnLocation.style.bottom = '12px';
+    }
 
     useEffect(() => {
+
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
                 center: new kakao.maps.LatLng(37.55634, 126.93635), // 지도의 중심좌표
@@ -63,13 +74,14 @@ const Home = () => {
                             "state": "smoke",
                             "data": doc.data()
                         });
-
+                        setBtnLocationUp();
 
                         selectedMarker = marker;
                         selectedMarkerType = "smoke";
                     }
                     else if (selectedMarker === marker) {
                         setTab({ "state": "none" });
+                        setBtnLocationDown();
                         if (selectedMarkerType === "smoke") {
                             !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
                         } else {
@@ -83,6 +95,7 @@ const Home = () => {
                 });
             });
         });
+
         // 금연구역 마커 생성
 
         const q2 = query(collection(db, "smokeInform"), where("smoke", "==", false));
@@ -113,12 +126,14 @@ const Home = () => {
                             "state": "nonsmoke",
                             "data": doc.data()
                         });
+                        setBtnLocationUp();
 
                         selectedMarker = marker;
                         selectedMarkerType = "nonsmoke"
                     }
                     else if (selectedMarker === marker) {
                         setTab({ "state": "none" });
+                        setBtnLocationDown();
                         if (selectedMarkerType === "smoke") {
                             !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
                         } else {
@@ -164,6 +179,12 @@ const Home = () => {
             var message = '위치정보를 사용할 수 없습니다. 다시 시도해주세요.'
             alert(message)
         }
+
+        // 지도 움직였을 때
+        kakao.maps.event.addListener(map, 'dragstart', function () {
+            const btnLocation = document.getElementById('btnLocation');
+            btnLocation.src = './images/ic_location_black.png';
+        });
     }, [])
 
     return (
@@ -171,9 +192,18 @@ const Home = () => {
             <Header />
             <Banner />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                <img className="btnLocation" src='./images/ic_location_orange.png' />
-                {tab.state === "smoke" && <SmokeTab data={tab.data} />}
-                {tab.state === "nonsmoke" && <NonsmokeTab data={tab.data} />}
+                <img id="btnLocation"
+                    className="btnLocation"
+                    src='./images/ic_location_orange.png'
+                    onClick={() => {
+                        const btnLocation = document.getElementById('btnLocation');
+                        btnLocation.src = './images/ic_location_orange.png';
+                        test();
+                    }} />
+                <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', flexDirection: 'column', width: '100%' }}>
+                    {tab.state === "smoke" && <SmokeTab data={tab.data} />}
+                    {tab.state === "nonsmoke" && <NonsmokeTab data={tab.data} />}
+                </div>
             </div>
         </>
     )

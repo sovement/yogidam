@@ -27,12 +27,12 @@ const Mypage = () => {
             </div>
             <div className={styles.divLine} />
         </Link>
-        <Link to="/Rules" style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to="/rules" style={{ textDecoration: 'none', color: 'black' }}>
             <div className={styles.tab}>
                 이용약관
             </div>
         </Link>
-        <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to="/rulesprivate" style={{ textDecoration: 'none', color: 'black' }}>
             <div className={styles.tab}>
                 개인정보보호정책
             </div>
