@@ -13,6 +13,7 @@ const MypageDetail = ({ userInform, setUserInform }) => {
             history.push('/login');
         }
     }, []);
+    
     const useConfirm = (onConfirm, onCancel, message = "Are you sure?") => {
         if (!onConfirm && typeof onConfirm !== "function") {
             return;

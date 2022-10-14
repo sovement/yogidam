@@ -15,7 +15,6 @@ const Complaint = ({userInform}) => {
     const [isCheckingBox, setIsCheckingBox] = useState(false);
     const [isAddressBox, setIsAddressBox] = useState(false);
 
-
     const changeState = (e) => {
         if (e.target.checked){
             setIsCheckingBox(true)
@@ -98,8 +97,6 @@ const Complaint = ({userInform}) => {
         };
         
         addDoc(collection(db, "help", "help", "compaint"), field);
-       
-        
     }
 
     return (

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import Header from "../components/Header";
 import styles from './Mypage.module.css';
-import { useEffect } from "react";
 
 const Mypage = () => {
     const history = useHistory();
@@ -13,6 +12,7 @@ const Mypage = () => {
             history.push('/login');
         }
     }, []);
+
 
     return (
         <>
@@ -27,12 +27,12 @@ const Mypage = () => {
             </div>
             <div className={styles.divLine} />
         </Link>
-        <Link to="/Rules" style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to="/rules" style={{ textDecoration: 'none', color: 'black' }}>
             <div className={styles.tab}>
                 이용약관
             </div>
         </Link>
-        <Link to="RulesPrivate" style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to="/rulesprivate" style={{ textDecoration: 'none', color: 'black' }}>
             <div className={styles.tab}>
                 개인정보보호정책
             </div>
