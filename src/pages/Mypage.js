@@ -23,7 +23,7 @@ const Mypage = () => {
                 이용약관
             </div>
         </Link>
-        <Link to="#" style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to="RulesPrivate" style={{ textDecoration: 'none', color: 'black' }}>
             <div className={styles.tab}>
                 개인정보보호정책
             </div>
