@@ -1,6 +1,5 @@
 .profile {
     width: 100%;
-    margin-top: 56px;
     height: 156px;
     display: flex;
     align-items: center;
@@ -77,6 +76,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+    border : solid black;
 }
 
 .tab {
@@ -87,6 +88,8 @@
     line-height: 19px;
     color: var(--gray-100);
     padding: 18px 0;
+    border:solid 1px black;
+    width: 100000%;
 }
 
 .mypageLine {
@@ -98,8 +101,6 @@
 .headerContainer {
     width: 100%;
     height: 24px;
-    position: fixed;
-    top: 0;
     flex-grow: 0;
     display: flex;
     justify-content: center;
@@ -107,4 +108,8 @@
     padding: 16px 0;
     border: solid 1px var(--black-15);
     background-color: var(--white-96);
+}
+
+.log-out{
+    background-color: green;
 }
