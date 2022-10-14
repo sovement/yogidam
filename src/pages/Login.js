@@ -19,7 +19,7 @@ const Login = () => {
         const body = {
             grant_type: "authorization_code",
             client_id: process.env.REACT_APP_KAKAO_REST_API_KEY,
-            redirect_uri: "https://yogidam.com/login",
+            redirect_uri: "http://yogidam.com/login",
             code: authorizeCodeFromKakao
         }
 
@@ -70,7 +70,7 @@ const Login = () => {
 
             try {
                 
-                fetch("https://kapi.kakao.com//v2/user/me",{
+                fetch("https://kapi.kakao.com/v2/user/me",{
                 method: "GET",
                 headers: {
                     'Authorization' : `Bearer ${token}`,
@@ -106,7 +106,7 @@ const Login = () => {
     }
 
     const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
-    const REDIRECT_URI = 'https://yogidam.com/login';
+    const REDIRECT_URI = 'http://yogidam.com/login';
     const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
 

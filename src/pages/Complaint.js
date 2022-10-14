@@ -1,6 +1,6 @@
 /*global kakao*/
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import { db } from '../firebase';
 import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
@@ -12,27 +12,16 @@ import Checkbox from '../components/Checkbox';
 
 const Complaint = ({userInform}) => {
     const [message, setMessage] = useState('');
-    const [isCheckingBox, setIsCheckingBox] = useState(false);
-    const [isAddressBox, setIsAddressBox] = useState(false);
+    const [address, setAdress] = useState('');
+    const history = useHistory();
 
-    const changeState = (e) => {
-        if (e.target.checked){
-            setIsCheckingBox(true)
-            console.log('지도 주소 활성')
-        }else{
-            setIsCheckingBox(false)
-            console.log('지도 주소 비활성')
+    const location = useLocation();
+    console.log(location);
+
+    useEffect(() => {
+        if (sessionStorage.getItem("kakao_token") == null) {
+            history.push('/login');
         }
-    }
-
-    useEffect((e)=>{
-        if(isCheckingBox){
-            setIsAddressBox(true)
-            console.log('주소창 활성')
-        }else{
-            setIsAddressBox(false)
-            console.log('주소창 비활성')
-        };
     })
 
 
@@ -90,14 +79,43 @@ const Complaint = ({userInform}) => {
     const sendComplaint = () => {
         const field = {
             timestamp: serverTimestamp(),
-            address: new GeoPoint(30.3, 50.1),
-            who: userInform.uid,
+            address: address,
+            who: sessionStorage.getItem("uid"),
             message: message
-            
         };
         
-        addDoc(collection(db, "help", "help", "compaint"), field);
+        if (message === "") {
+            window.confirm("민원 내용을 입력해주세요.")
+        } else {
+            addDoc(collection(db, "help", "help", "compaint"), field);
+            history.push('/complete');
+        }
     }
+
+    const cancelConfirm = () => console.log("취소완료")
+
+    const useConfirm = (onConfirm, onCancel, message = "Are you sure?") => {
+        if (!onConfirm && typeof onConfirm !== "function") {
+            return;
+        }
+
+        if (!onCancel && typeof onCancel !== "function") {
+            return;
+        }
+
+        const confirmAction = () => {
+            if (window.confirm(message)) {
+                onConfirm();
+
+            } else {
+                onCancel();
+            }
+        };
+
+        return confirmAction;
+    };
+
+    const complaintConfirm = useConfirm(sendComplaint, cancelConfirm, "민원을 접수하시겠습니까?");
 
     return (
         <>
@@ -118,7 +136,7 @@ const Complaint = ({userInform}) => {
                     {/* 기본 체크박스 */}
                     {/* <input type='checkbox' className="check-position" onClick={e=> changeState(e)} checked={isCheckingBox}></input><span className="text-position">위치</span> */}
                 </div>
-                <Checkbox text="위치"/>
+                <Checkbox text="위치" data={address} setData={setAdress} />
              
                 
             </div>
@@ -143,11 +161,9 @@ const Complaint = ({userInform}) => {
                 </textarea>
             </div>
 
-            <Link to="/complete" style={{ textDecoration: 'none', color: 'black' }}>
-                <div className='btnSubmit \- Large-Lable' onClick={sendComplaint}>
+                <div className='btnSubmit \- Large-Lable' onClick={complaintConfirm}>
                     민원 신청
                 </div>
-            </Link>
         </>
     );
 }
