@@ -1,30 +1,33 @@
 import React, {useState,useEffect} from 'react'
 import styled from "styled-components";
+import Postcode from './Postcode';
 
-export const Checkbox = ({text}) => {
+export const Checkbox = ({text, data, setData}) => {
     const [isAddressBox, setIsAddressBox] = useState(false);
-    const [message, setMessage] = useState('');
     const [isCheckingBox, setIsCheckingBox] = useState(false);
+    const [searchAddress, setSearchAddress] = useState(false);
 
     const changeState = (e) => {
         if (e.target.checked) {
             setIsCheckingBox(true)
-            console.log('지도 주소 활성')
         } else {
             setIsCheckingBox(false)
-            console.log('지도 주소 비활성')
         }
     }
 
     useEffect((e) => {
         if (isCheckingBox) {
             setIsAddressBox(true)
-            console.log('주소창 활성')
         } else {
             setIsAddressBox(false)
-            console.log('주소창 비활성')
         };
     })
+
+    const onPostcodeClick = () => {
+        if (isAddressBox) {
+            setSearchAddress(true);
+        }
+    }
 
     return (
         <> < StyledLabel htmlFor = {
@@ -35,11 +38,15 @@ export const Checkbox = ({text}) => {
         />
         <StyledP>{text}</StyledP>
     </StyledLabel>
-    <div>
+    <div onClick={onPostcodeClick}>
+        {searchAddress 
+        ? <Postcode setAddress={setData} setStatus={setSearchAddress} />
+        : null}
         <input
             disabled={(!isAddressBox)}
             className="text-address"
             placeholder='서울특별시 서대문구 연세로5가길 16'
+            value={data}
             type="text"></input>
 
     </div>
