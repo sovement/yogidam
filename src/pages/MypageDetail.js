@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import styles from './MypageDetail.module.css';
-import { useHistory } from "react-router-dom";
 import { auth, db } from '../firebase';
 import { deleteUser } from 'firebase/auth';
 import { doc, deleteDoc } from 'firebase/firestore';
 
 const MypageDetail = () => {
     const history = useHistory();
+
+    useEffect(() => {
+        if (sessionStorage.getItem("kakao_token") == null) {
+            history.push('/login');
+        }
+    }, []);
 
     const logout = () => {
         fetch("https://kapi.kakao.com/v1/user/logout",{
