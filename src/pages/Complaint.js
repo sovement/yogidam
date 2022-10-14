@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import { db } from '../firebase';
 import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 import './Complaint.css';
-import Checkbox from "./components/Checkbox";
+import Checkbox from '../components/Checkbox';
 
 const Complaint = () => {
     const history = useHistory();
@@ -17,7 +17,7 @@ const Complaint = () => {
         if (sessionStorage.getItem("kakao_token") == null) {
             history.push('/login');
         }
-
+ 
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
                 draggable: false,

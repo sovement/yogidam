@@ -18,8 +18,7 @@
     /* transform: translateX(-50%); */
     /* ? 위치 Fix시키는 것이 나을지 ? */
     height: 19px;
-    bottom: 24px;
-    margin: 0 16px;
+    margin: 0 16px 24px;
     flex-grow: 1;
     z-index: 2;
     display: flex;
