@@ -1,13 +1,65 @@
+import { getAuth } from "firebase/auth";
 import { Link } from 'react-router-dom';
 import styles from './MypageDetail.module.css';
 import { useHistory } from "react-router-dom";
 import { auth, db } from '../firebase';
 import { deleteUser } from 'firebase/auth';
 import { doc, deleteDoc } from 'firebase/firestore';
-import { useEffect } from 'react';
 
-const MypageDetail = () => {
+
+
+
+const MypageDetail = ({ userInform, setUserInform }) => {
     const history = useHistory();
+
+    const useConfirm = (onConfirm, onCancel, message = "Are you sure?") => {
+        if (!onConfirm && typeof onConfirm !== "function") {
+            return;
+        }
+
+        if (!onCancel && typeof onCancel !== "function") {
+            return;
+        }
+
+        const confirmAction = () => {
+            if (window.confirm(message)) {
+
+                onConfirm();
+
+            } else {
+                onCancel();
+            }
+        };
+
+        return confirmAction;
+    };
+    const applyConfirmLog = () => {
+        
+        console.log("로그아웃확인완료")
+        alert('로그아웃되었습니다.');
+        logout();
+    }
+    const applyConfirmUnlink = () => {
+        
+        console.log("탈퇴확인완료")
+        alert('탙퇴완료되었습니다. 이용해주셔서 감사합니다.');
+        unlink();
+    }
+    const cancelConfirm = () => console.log("취소완료")
+
+    const confirmLog = useConfirm(
+        applyConfirmLog,
+        cancelConfirm,
+        "로그아웃하시겠습니까?"
+    );
+
+    const confirmExit = useConfirm(
+        applyConfirmUnlink,
+        cancelConfirm,
+        "회원 탈퇴 하시겠습니까?"
+    )
+
+
 
     const logout = () => {
         fetch("https://kapi.kakao.com/v1/user/logout",{
@@ -18,11 +70,14 @@ const MypageDetail = () => {
             },
         })
         auth.signOut();
-        sessionStorage.clear();
+        setUserInform(null);
+        
+        sessionStorage.removeItem("kakao_token");
         history.push("/");
     }
 
     const unlink = () => {
+        confirmExit();
         fetch("https://kapi.kakao.com/v1/user/unlink",{
             method: "GET",
             headers: {
@@ -32,9 +87,11 @@ const MypageDetail = () => {
         })
         const user = auth.currentUser;
         deleteUser(user);
-        const userRef = doc(db, "user", sessionStorage.getItem("uid"));
+        const userRef = doc(db, "user", userInform.uid);
         deleteDoc(userRef);
-        sessionStorage.clear();
+        setUserInform(null);
+        
+        sessionStorage.removeItem("kakao_token");
         history.push("/");
     }
 
@@ -43,7 +100,6 @@ const MypageDetail = () => {
             <Link to="/mypage" style={{ textDecoration: 'none', color: 'black' }}>
                 <img style={{
                     position: 'fixed',
-                    zIndex: '2',
                     top: '16px',
                     left: '16px',
                     width: '24px',
@@ -55,7 +111,7 @@ const MypageDetail = () => {
                 <span className="text Headline">프로필 정보</span>
             </div>
             <div className={styles.profile}>
-                <img src={sessionStorage.getItem("photoURL")} alt="profile" />
+                <img src={userInform.photoURL} alt="profile" />
             </div>
             <div className={styles.profileContainer}>
                 <div className={styles.title}>
@@ -66,7 +122,7 @@ const MypageDetail = () => {
                         닉네임
                     </div>
                     <div className={styles.content}>
-                        {sessionStorage.getItem("displayName")}
+                        {userInform.displayName}
                     </div>
                     <div className={styles.profileLine} />
                 </div>
@@ -75,15 +131,15 @@ const MypageDetail = () => {
                         이메일
                     </div>
                     <div className={styles.content}>
-                        {sessionStorage.getItem("email").slice(-13) === '@sovement.com' ? '이메일 정보가 없습니다.' : sessionStorage.getItem("email")}
+                        {userInform.email.slice(-13) === '@sovement.com' ? '이메일 정보가 없습니다.' : userInform.email}
                     </div>
                     <div className={styles.profileLine} />
                 </div>
             </div>
             <div className={styles.mypage_tab}>
-                <div className={styles.tab} onClick={logout}>로그아웃</div>
+                <div className="log-out"><div className={styles.tab} onClick={confirmLog}><span>로그아웃</span></div></div>
                 <div className={styles.mypageLine} />
-                <div className={styles.tab} onClick={unlink}>회원탈퇴</div>
+                <div><div className={styles.tab} onClick={confirmExit}>회원탈퇴</div></div>
             </div>
         </>
     );
