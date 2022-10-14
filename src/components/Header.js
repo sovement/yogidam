@@ -31,7 +31,7 @@ const Header = () => {
                         </div>
                     </Link>
                 )}
-                
+
 
                 <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
                     <div className="tab">
@@ -45,7 +45,7 @@ const Header = () => {
                         리워드 프로모션
                     </div>
                 </Link> */}
-                <Link to="/help" style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to="/complaint" style={{ textDecoration: 'none', color: 'black' }}>
                     <div className="tab">
                         <img className="tabIcon" src="./images/ic_chat.svg" />
                         민원 신청
