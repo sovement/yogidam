@@ -190,8 +190,8 @@ const Home = () => {
     return (
         <>
             <Header />
-            <Banner />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
+            <Banner />
                 <img id="btnLocation"
                     className="btnLocation"
                     src='./images/ic_location_orange.png'

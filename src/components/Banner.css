@@ -1,11 +1,11 @@
 .Banner {
-    width: 85%;
+    /* width: 85%; */
     height: 58px;
-    position: fixed;
+    flex-grow: 1;
     display: flex;
-    left: 50%;
-    top: 72px;
-    transform: translateX(-50%);
+    margin: 16px;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
     z-index: 2;
     padding: 0 16px;
     border-radius: 4px;
