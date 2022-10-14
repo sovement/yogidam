@@ -5,6 +5,7 @@ import Complaint from "./pages/Complaint";
 import Login from "./pages/Login";
 import Help from "./pages/Help";
 import Rules from "./pages/Rules";
+import RulesPrivate from "./pages/RulesPrivate";
 import Promotion from "./pages/Promotion";
 import Complete from "./pages/Complete";
 
@@ -36,6 +37,12 @@ const routes = [
     }, {
         path: "/complete",
         component: Complete,
+    }, {
+        path: "/rules",
+        component: Rules,
+    },{
+        path: "/rulesprivate",
+        component: RulesPrivate,
     },
 ];
 
