@@ -2,11 +2,9 @@
     /* width: 85%; */
     height: 58px;
     flex-grow: 1;
-    /* position: fixed; */
     display: flex;
-    margin: 0 16px;
+    margin: 16px;
     /* left: 50%; */
-    top: 72px;
     /* transform: translateX(-50%); */
     z-index: 2;
     padding: 0 16px;
