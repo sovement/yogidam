@@ -1,0 +1,42 @@
+.Banner {
+    width: 85%;
+    height: 58px;
+    position: fixed;
+    display: flex;
+    left: 50%;
+    top: 72px;
+    transform: translateX(-50%);
+    z-index: 2;
+    padding: 0 16px;
+    border-radius: 4px;
+    background-color: var(--black-90);
+}
+
+.banner_textContainer {
+    margin: 0 0 0 11.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.banner_title {
+    height: 18px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px; 
+    display: flex;
+    letter-spacing: -0.02em;
+    color: var(--white-100);
+}
+
+.banner_subtitle {
+    height: 16px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px; 
+    display: flex;
+    letter-spacing: -0.02em;
+    color: var(--white-100);
+}
