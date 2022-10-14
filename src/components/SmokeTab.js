@@ -2,6 +2,10 @@ import './SmokeTab.css';
 import { Link } from 'react-router-dom';
 
 const SmokeTab = ({ data }) => {
+
+    const lat = data.address.latitude;
+    const lng = data.address.longitude;
+
     return (
         <div className="smokeTab">
             <img style={{
@@ -33,7 +37,7 @@ const SmokeTab = ({ data }) => {
                     {data.road}
                 </div>
                 <div className='btnContainer'>
-                    <a href={`https://map.kakao.com/link/to/${data.title},37.402056,127.108212`}
+                    <a href={`https://map.kakao.com/link/to/${data.title},${lat},${lng}`}
                         target='_blank'
                         style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
                         <div className='btnNavi Text-Style'>

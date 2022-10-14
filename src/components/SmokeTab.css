@@ -1,11 +1,12 @@
-.nonsmokeTab {
-    width: 85%;
+.smokeTab {
+    /* width: 85%; */
     height: 94px;
-    position: fixed;
+    flex-grow: 1;
+    /* position: fixed; */
     display: flex;
-    left: 50%;
-    bottom: 12px;
-    transform: translateX(-50%);
+    margin: 0 10px;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
     z-index: 2;
     padding: 16px;
     border-radius: 4px;

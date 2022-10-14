@@ -163,15 +163,23 @@ const Home = () => {
             var message = '위치정보를 사용할 수 없습니다. 다시 시도해주세요.'
             alert(message)
         }
+
+        // 지도 움직였을 때
+        kakao.maps.event.addListener(map, 'dragstart', function() {
+            var btnLocation = document.getElementById('btnLocation');
+            btnLocation.src='./images/ic_location_black.png';
+        });
     }, [])
 
     return (
         <>
             <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                <img className="btnLocation" src='./images/ic_location_orange.png' />
-                {tab.state === "smoke" && <SmokeTab data={tab.data} />}
-                {tab.state === "nonsmoke" && <NonsmokeTab data={tab.data} />}
+                    <img id="btnLocation" className="btnLocation" src='./images/ic_location_orange.png' />
+                <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', width: '100%' }}>
+                    {tab.state === "smoke" && <SmokeTab data={tab.data} />}
+                    {tab.state === "nonsmoke" && <NonsmokeTab data={tab.data} />}
+                </div>
             </div>
         </>
     )
