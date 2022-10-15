@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.31a0d59c.css",
-    "main.js": "/static/js/main.12b82e4b.js",
-    "static/js/787.9fc9a4e7.chunk.js": "/static/js/787.9fc9a4e7.chunk.js",
-    "static/media/PretendardVariable.woff2": "/static/media/PretendardVariable.36b3a87cd98126711b2b.woff2",
-    "static/media/Pretendard-Black.woff": "/static/media/Pretendard-Black.78d9f24400b70da75d37.woff",
-    "static/media/Pretendard-ExtraBold.woff": "/static/media/Pretendard-ExtraBold.a6f30dd6e4c3c93ea3cb.woff",
-    "static/media/Pretendard-Bold.woff": "/static/media/Pretendard-Bold.d0f80e7ac3933bfbf45d.woff",
-    "static/media/Pretendard-SemiBold.woff": "/static/media/Pretendard-SemiBold.3fb6e3741b5dffea918e.woff",
-    "static/media/Pretendard-Medium.woff": "/static/media/Pretendard-Medium.a2ef0b28cc457c109381.woff",
-    "static/media/Pretendard-Regular.woff": "/static/media/Pretendard-Regular.371a053f6fa19004d5fa.woff",
-    "static/media/Pretendard-Light.woff": "/static/media/Pretendard-Light.e90933d161baef9945bf.woff",
-    "static/media/Pretendard-ExtraLight.woff": "/static/media/Pretendard-ExtraLight.c4a5b6406da33f9e87cd.woff",
-    "static/media/Pretendard-Thin.woff": "/static/media/Pretendard-Thin.36a510183103a4487799.woff",
-    "index.html": "/index.html",
-    "static/media/ic_exit.svg": "/static/media/ic_exit.76a9d06a1dcbbf5b95d9.svg",
-    "main.31a0d59c.css.map": "/static/css/main.31a0d59c.css.map",
-    "main.12b82e4b.js.map": "/static/js/main.12b82e4b.js.map",
-    "787.9fc9a4e7.chunk.js.map": "/static/js/787.9fc9a4e7.chunk.js.map"
+    "main.css": "/yogidam/static/css/main.15f51d4a.css",
+    "main.js": "/yogidam/static/js/main.60322c89.js",
+    "static/js/787.9fc9a4e7.chunk.js": "/yogidam/static/js/787.9fc9a4e7.chunk.js",
+    "static/media/PretendardVariable.woff2": "/yogidam/static/media/PretendardVariable.36b3a87cd98126711b2b.woff2",
+    "static/media/Pretendard-Black.woff": "/yogidam/static/media/Pretendard-Black.78d9f24400b70da75d37.woff",
+    "static/media/Pretendard-ExtraBold.woff": "/yogidam/static/media/Pretendard-ExtraBold.a6f30dd6e4c3c93ea3cb.woff",
+    "static/media/Pretendard-Bold.woff": "/yogidam/static/media/Pretendard-Bold.d0f80e7ac3933bfbf45d.woff",
+    "static/media/Pretendard-SemiBold.woff": "/yogidam/static/media/Pretendard-SemiBold.3fb6e3741b5dffea918e.woff",
+    "static/media/Pretendard-Medium.woff": "/yogidam/static/media/Pretendard-Medium.a2ef0b28cc457c109381.woff",
+    "static/media/Pretendard-Regular.woff": "/yogidam/static/media/Pretendard-Regular.371a053f6fa19004d5fa.woff",
+    "static/media/Pretendard-Light.woff": "/yogidam/static/media/Pretendard-Light.e90933d161baef9945bf.woff",
+    "static/media/Pretendard-ExtraLight.woff": "/yogidam/static/media/Pretendard-ExtraLight.c4a5b6406da33f9e87cd.woff",
+    "static/media/Pretendard-Thin.woff": "/yogidam/static/media/Pretendard-Thin.36a510183103a4487799.woff",
+    "index.html": "/yogidam/index.html",
+    "static/media/ic_exit.svg": "/yogidam/static/media/ic_exit.76a9d06a1dcbbf5b95d9.svg",
+    "main.15f51d4a.css.map": "/yogidam/static/css/main.15f51d4a.css.map",
+    "main.60322c89.js.map": "/yogidam/static/js/main.60322c89.js.map",
+    "787.9fc9a4e7.chunk.js.map": "/yogidam/static/js/787.9fc9a4e7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.31a0d59c.css",
-    "static/js/main.12b82e4b.js"
+    "static/css/main.15f51d4a.css",
+    "static/js/main.60322c89.js"
   ]
 }
