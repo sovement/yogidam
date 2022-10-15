@@ -24,6 +24,7 @@ const Home = () => {
 
     useEffect(() => {
 
+
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
                 center: new kakao.maps.LatLng(37.55634, 126.93635), // 지도의 중심좌표
@@ -191,7 +192,7 @@ const Home = () => {
         <>
             <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-            <Banner />
+                <Banner />
                 <img id="btnLocation"
                     className="btnLocation"
                     src='./images/ic_location_orange.png'
