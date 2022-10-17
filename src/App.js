@@ -117,7 +117,7 @@ const App = () => {
   }
 
   return (
-    <Router basename='/yogidam'>
+    <Router>
       <Switch>
         <>
           <div>
