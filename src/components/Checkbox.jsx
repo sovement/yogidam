@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from "styled-components";
-import Postcode from './Postcode';
+import { useDaumPostcodePopup } from 'react-daum-postcode';
 
 export const Checkbox = ({ text, data, setData, placeholder, isCheckingBox, setIsCheckingBox }) => {
-    const [isAddressBox, setIsAddressBox] = useState(false);
-    const [searchAddress, setSearchAddress] = useState(false);
-
     const changeState = (e) => {
         if (e.target.checked) {
             setIsCheckingBox(true)
@@ -14,19 +11,28 @@ export const Checkbox = ({ text, data, setData, placeholder, isCheckingBox, setI
         }
     }
 
-    useEffect((e) => {
-        if (isCheckingBox) {
-            setIsAddressBox(true)
-        } else {
-            setIsAddressBox(false)
-        };
-    })
-
-    const onPostcodeClick = () => {
-        if (isAddressBox) {
-            setSearchAddress(true);
+    const open = useDaumPostcodePopup();
+    
+    const handleComplete = (data) => {
+        let fullAddress = data.address;
+        let extraAddress = '';
+    
+        if (data.addressType === 'R') {
+        if (data.bname !== '') {
+            extraAddress += data.bname;
         }
-    }
+        if (data.buildingName !== '') {
+            extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+        }
+        fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+        }
+    
+        setData(fullAddress);
+    };
+      
+    const handleClick = () => {
+        open({ onComplete: handleComplete });
+    };
 
     return (
         <> < StyledLabel htmlFor={
@@ -37,17 +43,16 @@ export const Checkbox = ({ text, data, setData, placeholder, isCheckingBox, setI
             />
             <StyledP>{text}</StyledP>
         </StyledLabel>
-            <div onClick={onPostcodeClick} style={{ display: 'flex', flexDirection: 'column' }}>
-                {searchAddress
-                    ? <Postcode setAddress={setData} setStatus={setSearchAddress} />
+            <div onClick={handleClick} style={{ display: 'flex', flexDirection: 'column' }}>
+                {isCheckingBox ?
+                    <input
+                        disabled={(!isCheckingBox)}
+                        className="text-address"
+                        placeholder={placeholder}
+                        value={data}
+                        type="text">
+                    </input>
                     : null}
-                <input
-                    disabled={(!isAddressBox)}
-                    className="text-address"
-                    placeholder={placeholder}
-                    value={data}
-                    type="text"></input>
-
             </div>
         </>
     );

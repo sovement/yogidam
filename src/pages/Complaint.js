@@ -12,7 +12,7 @@ const Complaint = () => {
     const [message, setMessage] = useState('');
     const [address, setAdress] = useState('');
     const [currentAddress, setCurrentAddress] = useState('서울특별시 서대문구 연세로5가길 16');
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(true);
     const history = useHistory();
 
     const location = useLocation();
