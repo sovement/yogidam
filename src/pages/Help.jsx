@@ -5,7 +5,7 @@ import './Help.css';
 import { db } from "../firebase";
 import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 
-function Help() {
+const Help = () => {
     const history = useHistory();
 
     const location = useLocation();
@@ -52,7 +52,7 @@ function Help() {
         function () {
             const field = {
                 timestamp: serverTimestamp(),
-                // address: new GeoPoint(lat, lng),
+                address: new GeoPoint(location.state.address.latitude, location.state.address.longitude),
                 who: sessionStorage.getItem("uid"),
             };
             addDoc(collection(db, "help", "help", "non_here"), field);

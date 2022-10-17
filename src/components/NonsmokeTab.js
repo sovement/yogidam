@@ -9,7 +9,8 @@ const NonsmokeTab = ({data}) => {
                 height: '94px',
                 borderRadius: '10px'
             }}
-                src={data.image} />
+                src={data.image}
+                alt="금연구역 이미지" />
             <div className='textContainer'>
                 <div style={{ display: 'flex' }}>
                     <div className="nonsmokeBadge small_text">

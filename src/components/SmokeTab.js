@@ -13,7 +13,8 @@ const SmokeTab = ({ data }) => {
                 height: '94px',
                 borderRadius: '10px'
             }}
-                src={data.image} />
+                src={data.image}
+                alt="흡연구역 이미지" />
             <div className='textContainer'>
                 <div style={{ display: 'flex' }}>
                     <div className="smokeBadge small_text">
@@ -53,9 +54,8 @@ const SmokeTab = ({ data }) => {
                             길찾기
                         </div>
                     </a>
-                    <Link to="/help"
-                        style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}
-                        state={{ address: data.address }}>
+                    <Link to={{pathname: "/help", state: {address: data.address }}}
+                        style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
                         <div className='btnHelp Text-Style'>
                             <img src='./images/ic_warning.svg' />
                             도움요청
