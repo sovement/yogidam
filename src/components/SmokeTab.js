@@ -19,24 +19,32 @@ const SmokeTab = ({ data }) => {
                     <div className="smokeBadge small_text">
                         흡연
                     </div>
-                    <span className='\- Headline'>
-                        &nbsp;{data.title}
-                    </span>
+                    <div className='\- Headline'
+                        style={{
+                            display: 'inline-block',
+                            width: 'calc(100% - 50px)',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            marginLeft: '6px',
+                        }}>
+                        {data.title}
+                    </div>
                 </div>
                 <div className='Footnote'
-                    style={{ 
+                    style={{
                         display: 'inline-block',
-                        width: 'calc(100% - 16px)',
+                        flexGrow: '1',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
-                        display: 'inline-block',
-                        whiteSpace: 'nowrap',
-                        color: 'var(--black-50)', 
-                        margin: '4px 0 17px' }}>
+                        color: 'var(--black-50)',
+                        margin: '4px 0 17px'
+                    }}>
                     {data.road}
                 </div>
-                <div className='btnContainer'>
+                {/* <div className='btnContainer'> */}
+                <div style={{ display: 'flex', gap: '8px'}}>
                     <a href={`https://map.kakao.com/link/to/${data.title},${lat},${lng}`}
                         target='_blank'
                         style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
@@ -46,8 +54,8 @@ const SmokeTab = ({ data }) => {
                         </div>
                     </a>
                     <Link to="/help"
-                    style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}
-                    state={{ address: data.address }}>
+                        style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}
+                        state={{ address: data.address }}>
                         <div className='btnHelp Text-Style'>
                             <img src='./images/ic_warning.svg' />
                             도움요청
