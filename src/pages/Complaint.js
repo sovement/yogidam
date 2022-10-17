@@ -1,12 +1,9 @@
-/*global kakao*/
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import { db } from '../firebase';
 import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 import './Complaint.css';
-
-
 import Checkbox from '../components/Checkbox';
 
 
@@ -24,54 +21,9 @@ const Complaint = () => {
         }
     })
 
-
-    useEffect(() => {
-        var mapContainer = document.getElementById('map'), // 지도 표시할 div
-            mapOption = {
-                draggable: false,
-                center: new kakao.maps.LatLng(37.55634, 126.93635), // 지도의 중심좌표
-                level: 1 // 지도의 확대 레벨
-            };
-
-        // 지도 생성
-        var map = new kakao.maps.Map(mapContainer, mapOption);
-
-        // 현재위치
-        if (navigator.geolocation) {
-
-            navigator.geolocation.getCurrentPosition(function (position) {
-
-                // 현재위치 지정
-                var lat = position.coords.latitude,
-                    lon = position.coords.longitude;
-                var locPosition = new kakao.maps.LatLng(lat, lon);
-
-                // 현재위치 마커 생성
-                var markerCurrent = new kakao.maps.MarkerImage(
-                    './images/ic_marker_current.svg',
-                    new kakao.maps.Size(32, 32),
-                    { offset: new kakao.maps.Point(0, 0) });
-
-                var marker = new kakao.maps.Marker({
-                    position: locPosition,
-                    image: markerCurrent, // 마커이미지 설정
-                    clickable: true
-                });
-                marker.setMap(map);
-                map.setCenter(locPosition);
-
-                // TODO: 1초에 한 번씩 갱신
-            });
-
-        } else { // HTML5 GeoLocation 사용할 수 없을 때
-            var message = '위치정보를 사용할 수 없습니다. 다시 시도해주세요.'
-            alert(message)
-        }
-    }, [])
-
     const onChange = (event) => {
         const {
-          target: { value },
+            target: { value },
         } = event;
         setMessage(value);
     };
@@ -83,7 +35,7 @@ const Complaint = () => {
             who: sessionStorage.getItem("uid"),
             message: message
         };
-        
+
         if (message === "") {
             window.confirm("민원 내용을 입력해주세요.")
         } else {
@@ -130,24 +82,16 @@ const Complaint = () => {
                 </div>
             </div>
             <div>
-                
-                {/* 체크박스 선택하면 활성 비활성 */}
-                <div className='text Headline' style={{ marginBottom: '12px' }}>
-                    {/* 기본 체크박스 */}
-                    {/* <input type='checkbox' className="check-position" onClick={e=> changeState(e)} checked={isCheckingBox}></input><span className="text-position">위치</span> */}
-                </div>
-                <Checkbox text="위치" data={address} setData={setAdress} />
-             
-                
-            </div>
-            <div style={{ margin: '32px 16px' }}>
-               
-                {/* 지도부분 */}
-                <div id="map" style={{ height: "0", paddingBottom: '0%' }}></div>
 
+                {/* 체크박스 선택하면 활성 비활성 */}
+                <Checkbox text="위치" data={address} setData={setAdress} />
+
+
+            </div>
+            <div style={{ display: 'flex', margin: '32px 16px' }}>
                 <div className='text Headline' style={{ marginTop: '24px' }}>민원내용</div>
-                <textarea 
-                    style={{ whiteSpace: 'pre-wrap' }}
+                <textarea
+                    style={{ whiteSpace: 'pre-wrap', flexGrow: '1' }}
                     className='message -Placeholder Placeholder-2'
                     onChange={onChange}
                     placeholder='
@@ -161,9 +105,9 @@ const Complaint = () => {
                 </textarea>
             </div>
 
-                <div className='btnSubmit \- Large-Lable' onClick={complaintConfirm}>
-                    민원 신청
-                </div>
+            <div className='btnSubmit \- Large-Lable' onClick={complaintConfirm}>
+                민원 신청
+            </div>
         </>
     );
 }

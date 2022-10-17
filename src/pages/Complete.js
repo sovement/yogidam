@@ -42,12 +42,13 @@ const Complete = () => {
                 <div style={{ margin: '89px 24px 16px' }} className="Title Large-Title">
                     {title}
                 </div>
-                <div style={{ textAlign: 'center', color: 'var(--black-50)' }} className="Subtext Body-2">
-                    {
+                <div style={{ whiteSpace: 'pre-wrap', textAlign: 'center', color: 'var(--black-50)' }} className="Subtext Body-2">
+                    {/* {
                         body.split("\n").map((i,key) => {
                             return <div key={key}>{i}</div>;
                         })
-                    }
+                    } */}
+                    {body}
                 </div>
                 <img style={{ width: '280px', height: '280px', marginTop: '88px' }} src='./images/app_symbol_3d.png' />
             </div>
