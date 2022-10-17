@@ -1,12 +1,9 @@
-/*global kakao*/
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import { db } from '../firebase';
 import { addDoc, serverTimestamp, GeoPoint, collection } from "firebase/firestore";
 import './Complaint.css';
-
-
 import Checkbox from '../components/Checkbox';
 
 
@@ -25,8 +22,7 @@ const Complaint = () => {
             history.push('/login');
         }
     })
-
-
+    
     useEffect(() => {
         var geocoder = new kakao.maps.services.Geocoder()
         // 현재위치
@@ -50,10 +46,10 @@ const Complaint = () => {
             alert(message)
         }
     }, [])
-
+    
     const onChange = (event) => {
         const {
-          target: { value },
+            target: { value },
         } = event;
         setMessage(value);
     };
@@ -65,7 +61,7 @@ const Complaint = () => {
             who: sessionStorage.getItem("uid"),
             message: message
         };
-        
+
         if (message === "") {
             window.confirm("민원 내용을 입력해주세요.")
         } else {
@@ -112,7 +108,7 @@ const Complaint = () => {
                 </div>
             </div>
             <div>
-                
+
                 {/* 체크박스 선택하면 활성 비활성 */}
                 <div className='text Headline' style={{ marginBottom: '12px' }}>
                     {/* 기본 체크박스 */}
@@ -133,9 +129,12 @@ const Complaint = () => {
                 {/* 지도부분 */}
                 <div id="map" style={{ height: "0", paddingBottom: '0%' }}></div>
 
+
+            </div>
+            <div style={{ display: 'flex', margin: '32px 16px' }}>
                 <div className='text Headline' style={{ marginTop: '24px' }}>민원내용</div>
-                <textarea 
-                    style={{ whiteSpace: 'pre-wrap' }}
+                <textarea
+                    style={{ whiteSpace: 'pre-wrap', flexGrow: '1' }}
                     className='message -Placeholder Placeholder-2'
                     onChange={onChange}
                     placeholder='
@@ -149,9 +148,9 @@ const Complaint = () => {
                 </textarea>
             </div>
 
-                <div className='btnSubmit \- Large-Lable' onClick={complaintConfirm}>
-                    민원 신청
-                </div>
+            <div className='btnSubmit \- Large-Lable' onClick={complaintConfirm}>
+                민원 신청
+            </div>
         </>
     );
 }
