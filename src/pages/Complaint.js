@@ -1,3 +1,4 @@
+/* global kakao */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import Header from '../components/Header';
@@ -135,7 +136,7 @@ const Complaint = () => {
 
 
             </div>
-            <div style={{ display: 'flex', margin: '32px 16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', margin: '32px 16px' }}>
                 <div className='text Headline' style={{ marginTop: '24px' }}>민원내용</div>
                 <textarea
                     style={{ whiteSpace: 'pre-wrap', flexGrow: '1' }}
