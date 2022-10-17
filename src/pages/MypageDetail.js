@@ -5,7 +5,7 @@ import { auth, db } from '../firebase';
 import { deleteUser } from 'firebase/auth';
 import { doc, deleteDoc } from 'firebase/firestore';
 
-const MypageDetail = ({ userInform, setUserInform }) => {
+const MypageDetail = () => {
     const history = useHistory();
 
     useEffect(() => {
@@ -70,9 +70,7 @@ const MypageDetail = ({ userInform, setUserInform }) => {
             },
         })
         auth.signOut();
-        setUserInform(null);
-        
-        sessionStorage.removeItem("kakao_token");
+        sessionStorage.clear();
         history.push("/");
     }
 
@@ -87,11 +85,9 @@ const MypageDetail = ({ userInform, setUserInform }) => {
         })
         const user = auth.currentUser;
         deleteUser(user);
-        const userRef = doc(db, "user", userInform.uid);
+        const userRef = doc(db, "user", sessionStorage.getItem("uid"));
         deleteDoc(userRef);
-        setUserInform(null);
-        
-        sessionStorage.removeItem("kakao_token");
+        sessionStorage.clear();
         history.push("/");
     }
 
@@ -111,7 +107,7 @@ const MypageDetail = ({ userInform, setUserInform }) => {
                 <span className="text Headline">프로필 정보</span>
             </div>
             <div className={styles.profile}>
-                <img src={userInform.photoURL} alt="profile" />
+                <img src={sessionStorage.getItem("photoURL")} alt="profile" />
             </div>
             <div className={styles.profileContainer}>
                 <div className={styles.title}>
@@ -122,7 +118,7 @@ const MypageDetail = ({ userInform, setUserInform }) => {
                         닉네임
                     </div>
                     <div className={styles.content}>
-                        {userInform.displayName}
+                        {sessionStorage.getItem("displayName")}
                     </div>
                     <div className={styles.profileLine} />
                 </div>
@@ -131,7 +127,7 @@ const MypageDetail = ({ userInform, setUserInform }) => {
                         이메일
                     </div>
                     <div className={styles.content}>
-                        {userInform.email.slice(-13) === '@sovement.com' ? '이메일 정보가 없습니다.' : userInform.email}
+                    {sessionStorage.getItem("email").slice(-13) === '@sovement.com' ? '이메일 정보가 없습니다.' : sessionStorage.getItem("email")}
                     </div>
                     <div className={styles.profileLine} />
                 </div>
