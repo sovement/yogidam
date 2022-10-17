@@ -18,11 +18,11 @@ const Complaint = () => {
     const location = useLocation();
     console.log(location);
 
-    // useEffect(() => {
-    //     if (sessionStorage.getItem("kakao_token") == null) {
-    //         history.push('/login');
-    //     }
-    // })
+    useEffect(() => {
+        if (sessionStorage.getItem("kakao_token") == null) {
+            history.push('/login');
+        }
+    })
 
     useEffect(() => {
         var geocoder = new kakao.maps.services.Geocoder()
