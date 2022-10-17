@@ -18,11 +18,11 @@ const Complaint = () => {
     const location = useLocation();
     console.log(location);
 
-    useEffect(() => {
-        if (sessionStorage.getItem("kakao_token") == null) {
-            history.push('/login');
-        }
-    })
+    // useEffect(() => {
+    //     if (sessionStorage.getItem("kakao_token") == null) {
+    //         history.push('/login');
+    //     }
+    // })
 
     useEffect(() => {
         var geocoder = new kakao.maps.services.Geocoder()
@@ -66,7 +66,7 @@ const Complaint = () => {
         if (message === "") {
             window.confirm("민원 내용을 입력해주세요.")
         } else {
-            addDoc(collection(db, "help", "help", "compaint"), field);
+            addDoc(collection(db, "help", "help", "complaint"), field);
 
             history.push({
                 pathname: '/complete',
@@ -112,13 +112,7 @@ const Complaint = () => {
                     상생 가능한 도시 조성을 위해 소중한 한마디 부탁드립니다.
                 </div>
             </div>
-            <div>
-
-                {/* 체크박스 선택하면 활성 비활성 */}
-                <div className='text Headline' style={{ marginBottom: '12px' }}>
-                    {/* 기본 체크박스 */}
-                    {/* <input type='checkbox' className="check-position" onClick={e=> changeState(e)} checked={isCheckingBox}></input><span className="text-position">위치</span> */}
-                </div>
+            <div style={{ display: 'flex', flexDirection: 'column'}}>
                 <Checkbox
                     text="위치"
                     data={address}
@@ -127,13 +121,8 @@ const Complaint = () => {
                     isCheckingBox={checked}
                     setIsCheckingBox={setChecked} />
 
-
             </div>
             <div style={{ margin: '32px 16px' }}>
-
-                {/* 지도부분 */}
-                <div id="map" style={{ height: "0", paddingBottom: '0%' }}></div>
-
 
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', margin: '32px 16px' }}>

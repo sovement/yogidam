@@ -1,8 +1,8 @@
-import React, {useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
 import Postcode from './Postcode';
 
-export const Checkbox = ({text, data, setData, placeholder, isCheckingBox, setIsCheckingBox}) => {
+export const Checkbox = ({ text, data, setData, placeholder, isCheckingBox, setIsCheckingBox }) => {
     const [isAddressBox, setIsAddressBox] = useState(false);
     const [searchAddress, setSearchAddress] = useState(false);
 
@@ -29,33 +29,33 @@ export const Checkbox = ({text, data, setData, placeholder, isCheckingBox, setIs
     }
 
     return (
-        <> < StyledLabel htmlFor = {
+        <> < StyledLabel htmlFor={
             text
         } > <StyledInput type="checkbox" id={text} name={text}
-        onClick={e=>changeState(e)}
-        checked={isCheckingBox}
-        />
-        <StyledP>{text}</StyledP>
-    </StyledLabel>
-    <div onClick={onPostcodeClick}>
-        {searchAddress 
-        ? <Postcode setAddress={setData} setStatus={setSearchAddress} />
-        : null}
-        <input
-            disabled={(!isAddressBox)}
-            className="text-address"
-            placeholder={placeholder}
-            value={data}
-            type="text"></input>
+            onClick={e => changeState(e)}
+            checked={isCheckingBox}
+            />
+            <StyledP>{text}</StyledP>
+        </StyledLabel>
+            <div onClick={onPostcodeClick} style={{ display: 'flex', flexDirection: 'column' }}>
+                {searchAddress
+                    ? <Postcode setAddress={setData} setStatus={setSearchAddress} />
+                    : null}
+                <input
+                    disabled={(!isAddressBox)}
+                    className="text-address"
+                    placeholder={placeholder}
+                    value={data}
+                    type="text"></input>
 
-    </div>
-</>
+            </div>
+        </>
     );
 }
 
 export default Checkbox;
 
-const StyledInput = styled.input `
+const StyledInput = styled.input`
 appearance: none;
 border: 1.5px solid #757575;
 //   border-radius: 0.35rem;
@@ -74,13 +74,13 @@ margin-left: 20px;
 }
 `;
 
-const StyledLabel = styled.label `
+const StyledLabel = styled.label`
 display: flex;
 align-items: center;
 user-select: none;
 `;
 
-const StyledP = styled.p `
+const StyledP = styled.p`
 margin-left: 0.25rem;
 font-size: 14px;
 width: 31px;
