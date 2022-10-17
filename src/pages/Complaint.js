@@ -10,7 +10,7 @@ import './Complaint.css';
 import Checkbox from '../components/Checkbox';
 
 
-const Complaint = ({userInform}) => {
+const Complaint = () => {
     const [message, setMessage] = useState('');
     const [address, setAdress] = useState('');
     const history = useHistory();
