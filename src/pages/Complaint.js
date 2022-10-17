@@ -10,6 +10,8 @@ import Checkbox from '../components/Checkbox';
 const Complaint = () => {
     const [message, setMessage] = useState('');
     const [address, setAdress] = useState('');
+    const [currentAddress, setCurrentAddress] = useState('서울특별시 서대문구 연세로5가길 16');
+    const [checked, setChecked] = useState(false);
     const history = useHistory();
 
     const location = useLocation();
@@ -20,7 +22,31 @@ const Complaint = () => {
             history.push('/login');
         }
     })
+    
+    useEffect(() => {
+        var geocoder = new kakao.maps.services.Geocoder()
+        // 현재위치
+        if (navigator.geolocation) {
 
+            navigator.geolocation.getCurrentPosition(function (position) {
+                // 현재위치 지정
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+            
+                geocoder.coord2Address(lon, lat, function(result, status) {
+                    if (status === kakao.maps.services.Status.OK) {
+                        var roadAddress = !!result[0].road_address ? result[0].road_address.address_name : '';
+                        setCurrentAddress(roadAddress);
+                    }
+                });
+            });
+
+        } else { // HTML5 GeoLocation 사용할 수 없을 때
+            var message = '위치정보를 사용할 수 없습니다. 다시 시도해주세요.'
+            alert(message)
+        }
+    }, [])
+    
     const onChange = (event) => {
         const {
             target: { value },
@@ -31,7 +57,7 @@ const Complaint = () => {
     const sendComplaint = () => {
         const field = {
             timestamp: serverTimestamp(),
-            address: address,
+            address: checked ? (address === '' ? currentAddress : address) : '',
             who: sessionStorage.getItem("uid"),
             message: message
         };
@@ -84,7 +110,24 @@ const Complaint = () => {
             <div>
 
                 {/* 체크박스 선택하면 활성 비활성 */}
-                <Checkbox text="위치" data={address} setData={setAdress} />
+                <div className='text Headline' style={{ marginBottom: '12px' }}>
+                    {/* 기본 체크박스 */}
+                    {/* <input type='checkbox' className="check-position" onClick={e=> changeState(e)} checked={isCheckingBox}></input><span className="text-position">위치</span> */}
+                </div>
+                <Checkbox
+                    text="위치" 
+                    data={address}
+                    setData={setAdress}
+                    placeholder={currentAddress}
+                    isCheckingBox={checked}
+                    setIsCheckingBox={setChecked} />
+             
+                
+            </div>
+            <div style={{ margin: '32px 16px' }}>
+               
+                {/* 지도부분 */}
+                <div id="map" style={{ height: "0", paddingBottom: '0%' }}></div>
 
 
             </div>

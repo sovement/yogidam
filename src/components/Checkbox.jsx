@@ -2,9 +2,8 @@ import React, {useState,useEffect} from 'react'
 import styled from "styled-components";
 import Postcode from './Postcode';
 
-export const Checkbox = ({text, data, setData}) => {
+export const Checkbox = ({text, data, setData, placeholder, isCheckingBox, setIsCheckingBox}) => {
     const [isAddressBox, setIsAddressBox] = useState(false);
-    const [isCheckingBox, setIsCheckingBox] = useState(false);
     const [searchAddress, setSearchAddress] = useState(false);
 
     const changeState = (e) => {
@@ -45,7 +44,7 @@ export const Checkbox = ({text, data, setData}) => {
         <input
             disabled={(!isAddressBox)}
             className="text-address"
-            placeholder='서울특별시 서대문구 연세로5가길 16'
+            placeholder={placeholder}
             value={data}
             type="text"></input>
 
