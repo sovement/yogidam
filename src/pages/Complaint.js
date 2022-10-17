@@ -22,7 +22,7 @@ const Complaint = () => {
             history.push('/login');
         }
     })
-    
+
     useEffect(() => {
         var geocoder = new kakao.maps.services.Geocoder()
         // 현재위치
@@ -32,8 +32,8 @@ const Complaint = () => {
                 // 현재위치 지정
                 const lat = position.coords.latitude;
                 const lon = position.coords.longitude;
-            
-                geocoder.coord2Address(lon, lat, function(result, status) {
+
+                geocoder.coord2Address(lon, lat, function (result, status) {
                     if (status === kakao.maps.services.Status.OK) {
                         var roadAddress = !!result[0].road_address ? result[0].road_address.address_name : '';
                         setCurrentAddress(roadAddress);
@@ -46,7 +46,7 @@ const Complaint = () => {
             alert(message)
         }
     }, [])
-    
+
     const onChange = (event) => {
         const {
             target: { value },
@@ -66,7 +66,11 @@ const Complaint = () => {
             window.confirm("민원 내용을 입력해주세요.")
         } else {
             addDoc(collection(db, "help", "help", "compaint"), field);
-            history.push('/complete');
+
+            history.push({
+                pathname: '/complete',
+                state: 'complaint',
+            });
         }
     }
 
@@ -115,17 +119,17 @@ const Complaint = () => {
                     {/* <input type='checkbox' className="check-position" onClick={e=> changeState(e)} checked={isCheckingBox}></input><span className="text-position">위치</span> */}
                 </div>
                 <Checkbox
-                    text="위치" 
+                    text="위치"
                     data={address}
                     setData={setAdress}
                     placeholder={currentAddress}
                     isCheckingBox={checked}
                     setIsCheckingBox={setChecked} />
-             
-                
+
+
             </div>
             <div style={{ margin: '32px 16px' }}>
-               
+
                 {/* 지도부분 */}
                 <div id="map" style={{ height: "0", paddingBottom: '0%' }}></div>
 
