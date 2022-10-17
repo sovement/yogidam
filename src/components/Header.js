@@ -52,7 +52,7 @@ const Header = () => {
                     </div>
                 </Link>
 
-                <a target='_blank' href="https://www.google.com/search?q=%28sovement+%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9E%84%29&ei=pO9DY6idEYKohwOK94vwBw&ved=0ahUKEwio_5H7tdX6AhUC1GEKHYr7An4Q4dUDCA4&uact=5&oq=%28sovement+%EC%82%AC%EC%9D%B4%ED%8A%B8%EC%9E%84%29&gs_lcp=Cgdnd3Mtd2l6EAMyBQghEKABOgoIABBHENYEELADOggIABCABBCxAzoFCAAQgAQ6BwgAEIAEEAo6DgguEIAEEMcBENEDENQCOgsIABCABBCxAxCDAToRCC4QgAQQsQMQgwEQxwEQ0QM6BAgAEB46BwgAEIAEEBM6CQgAEIAEEAoQEzoICAAQHhAKEBM6AggmOgUIABCiBEoECEEYAEoECEYYAFCmA1iRV2DUZmgPcAB4C4ABlAGIAY4ykgEENC40OZgBAKABAbABAMgBCsABAQ&sclient=gws-wiz"
+                <a target='_blank' href="https://confirmed-abacus-c59.notion.site/YOGIDAM-efd71a09b8fe40bc9cf19d4e38733573"
                     style={{ textDecoration: 'none', color: 'black' }}>
                     <div className="tab">
                         <img className="tabIcon" src="./images/app_symbol.svg" />
