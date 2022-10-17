@@ -37,7 +37,7 @@ export const Checkbox = ({ text, data, setData, placeholder, isCheckingBox, setI
             />
             <StyledP>{text}</StyledP>
         </StyledLabel>
-            <div onClick={onPostcodeClick} style={{ display: 'flex', flexDirection: 'column' }}>
+            <div onClick={onPostcodeClick} style={{ display: 'flex', flexDirection: 'col' }}>
                 {searchAddress
                     ? <Postcode setAddress={setData} setStatus={setSearchAddress} />
                     : null}

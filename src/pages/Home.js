@@ -11,12 +11,12 @@ import Banner from '../components/Banner';
 const Home = () => {
 
     const [tab, setTab] = useState({ "state": "null" });
-    var lat, lng;
 
     const setBtnLocationUp = () => {
         const btnLocation = document.getElementById('btnLocation');
         btnLocation.style.bottom = '151px';
     }
+
     const setBtnLocationDown = () => {
         const btnLocation = document.getElementById('btnLocation');
         btnLocation.style.bottom = '12px';
@@ -24,7 +24,8 @@ const Home = () => {
 
     useEffect(() => {
 
-
+        var lat, lng, locPosition;
+        var isInit = true;
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
                 center: new kakao.maps.LatLng(37.55634, 126.93635), // 지도의 중심좌표
@@ -149,43 +150,55 @@ const Home = () => {
             });
         });
 
+
+        // 현재위치 마커 생성
+        var markerCurrent = new kakao.maps.MarkerImage(
+            './images/ic_marker_current.svg',
+            new kakao.maps.Size(32, 32),
+            { offset: new kakao.maps.Point(0, 0) });
+
+        var marker = new kakao.maps.Marker({
+            image: markerCurrent,
+            clickable: true
+        });
+
         // 현재위치
-        if (navigator.geolocation) {
+        const locRefresher = setInterval(() => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
 
-            navigator.geolocation.getCurrentPosition(function (position) {
+                    // 현재위치 지정
+                    lat = position.coords.latitude;
+                    lng = position.coords.longitude;
+                    locPosition = new kakao.maps.LatLng(lat, lng);
 
-                // 현재위치 지정
-                var lat = position.coords.latitude,
-                    lon = position.coords.longitude;
-                var locPosition = new kakao.maps.LatLng(lat, lon);
+                    marker.setPosition(locPosition);
+                    marker.setMap(null);
+                    marker.setMap(map);
 
-                // 현재위치 마커 생성
-                var markerCurrent = new kakao.maps.MarkerImage(
-                    './images/ic_marker_current.svg',
-                    new kakao.maps.Size(32, 32),
-                    { offset: new kakao.maps.Point(0, 0) });
-
-                var marker = new kakao.maps.Marker({
-                    position: locPosition,
-                    image: markerCurrent, // 마커이미지 설정
-                    clickable: true
+                    if (isInit) {
+                        map.setCenter(locPosition);
+                        isInit = false;
+                    }
                 });
-                marker.setMap(map);
-                map.setCenter(locPosition);
 
-                // TODO: 1초에 한 번씩 갱신
-            });
-
-        } else { // HTML5 GeoLocation 사용할 수 없을 때
-            var message = '위치정보를 사용할 수 없습니다. 다시 시도해주세요.'
-            alert(message)
-        }
+            } else { // HTML5 GeoLocation 사용할 수 없을 때
+                var message = '위치정보를 사용할 수 없습니다. 다시 시도해주세요.'
+                alert(message)
+            }
+        }, 1000);
 
         // 지도 움직였을 때
         kakao.maps.event.addListener(map, 'dragstart', function () {
             const btnLocation = document.getElementById('btnLocation');
             btnLocation.src = './images/ic_location_black.png';
         });
+
+        const btnLocation = document.getElementById('btnLocation');
+        btnLocation.onclick = () => {
+            btnLocation.src = './images/ic_location_orange.png';
+            map.setCenter(locPosition);
+        }
     }, [])
 
     return (
@@ -195,12 +208,7 @@ const Home = () => {
                 <Banner />
                 <img id="btnLocation"
                     className="btnLocation"
-                    src='./images/ic_location_orange.png'
-                    onClick={() => {
-                        const btnLocation = document.getElementById('btnLocation');
-                        btnLocation.src = './images/ic_location_orange.png';
-                        test();
-                    }} />
+                    src='./images/ic_location_orange.png' />
                 <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', flexDirection: 'column', width: '100%' }}>
                     {tab.state === "smoke" && <SmokeTab data={tab.data} />}
                     {tab.state === "nonsmoke" && <NonsmokeTab data={tab.data} />}
