@@ -194,12 +194,24 @@ const Home = () => {
             btnLocation.src = './images/ic_location_black.png';
         });
 
+        // 현위치 버튼
         const btnLocation = document.getElementById('btnLocation');
         btnLocation.onclick = () => {
             isFocusMoved = false;
             btnLocation.src = './images/ic_location_orange.png';
             map.setCenter(locPosition);
         }
+
+        // 맵 클릭 시
+        kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+            setTab({ "state": "none" });
+            setBtnLocationDown();
+            if (selectedMarkerType === "smoke") {
+                !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
+            } else {
+                !!selectedMarker && selectedMarker.setImage(markerNonsmokeDefault);
+            }
+        });
     }, [])
 
     return (
