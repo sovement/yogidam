@@ -25,7 +25,7 @@ const Home = () => {
     useEffect(() => {
 
         var lat, lng, locPosition;
-        var isInit = true;
+        var isFocusMoved = false;
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
                 center: new kakao.maps.LatLng(37.55634, 126.93635), // 지도의 중심좌표
@@ -176,9 +176,8 @@ const Home = () => {
                     marker.setMap(null);
                     marker.setMap(map);
 
-                    if (isInit) {
+                    if (!isFocusMoved) {
                         map.setCenter(locPosition);
-                        isInit = false;
                     }
                 });
 
@@ -190,12 +189,14 @@ const Home = () => {
 
         // 지도 움직였을 때
         kakao.maps.event.addListener(map, 'dragstart', function () {
+            isFocusMoved = true;
             const btnLocation = document.getElementById('btnLocation');
             btnLocation.src = './images/ic_location_black.png';
         });
 
         const btnLocation = document.getElementById('btnLocation');
         btnLocation.onclick = () => {
+            isFocusMoved = false;
             btnLocation.src = './images/ic_location_orange.png';
             map.setCenter(locPosition);
         }
