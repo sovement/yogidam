@@ -13,11 +13,19 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 
 const { Kakao } = window;
 
+export const setOneVh = () => {
+	const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+};
 
 const App = () => {
   const [userInform, setUserInform] = useState(null);
 
   useEffect(() => {
+
+    setOneVh();
+    window.addEventListener('resize', setOneVh);
+
     const authorizeCodeFromKakao = window.location.search.split("=")[1]
     if (authorizeCodeFromKakao !== undefined) {
 
