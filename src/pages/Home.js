@@ -6,7 +6,6 @@ import NonsmokeTab from '../components/NonsmokeTab';
 import './Home.css';
 import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import Banner from '../components/Banner';
 
 const Home = () => {
 
@@ -26,6 +25,7 @@ const Home = () => {
 
         var lat, lng, locPosition;
         var isFocusMoved = false;
+        var isInit = true;
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
                 center: new kakao.maps.LatLng(37.56240, 126.93853), // 지도의 중심좌표
@@ -171,7 +171,11 @@ const Home = () => {
                     lat = position.coords.latitude;
                     lng = position.coords.longitude;
                     locPosition = new kakao.maps.LatLng(lat, lng);
-
+                    
+                    if(isInit) {
+                        map.setLevel(1);
+                        isInit = false;
+                    }
                     marker.setPosition(locPosition);
                     marker.setMap(null);
                     marker.setMap(map);
@@ -206,6 +210,7 @@ const Home = () => {
         const banner = document.getElementById('banner');
         banner.onclick = () => {
             console.log('Banner clicked');
+            map.setLevel(4);
             isFocusMoved = true;
             const btnLocation = document.getElementById('btnLocation');
             btnLocation.src = './images/ic_location_black.png';
