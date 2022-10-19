@@ -28,8 +28,8 @@ const Home = () => {
         var isFocusMoved = false;
         var mapContainer = document.getElementById('map'), // 지도 표시할 div
             mapOption = {
-                center: new kakao.maps.LatLng(37.55634, 126.93635), // 지도의 중심좌표
-                level: 1 // 지도의 확대 레벨
+                center: new kakao.maps.LatLng(37.56240, 126.93853), // 지도의 중심좌표
+                level: 4 // 지도의 확대 레벨
             };
 
         // 지도 생성
@@ -202,10 +202,22 @@ const Home = () => {
             map.setCenter(locPosition);
         }
 
-        // 맵 클릭 시
+        // 배너 클릭 이벤트
+        const banner = document.getElementById('banner');
+        banner.onclick = () => {
+            console.log('Banner clicked');
+            isFocusMoved = true;
+            const btnLocation = document.getElementById('btnLocation');
+            btnLocation.src = './images/ic_location_black.png';
+            map.setCenter(new kakao.maps.LatLng(37.56240, 126.93853));
+        }
+
+        // 맵 클릭 시 
         kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
             setTab({ "state": "none" });
             setBtnLocationDown();
+            var latlng = mouseEvent.latLng;
+
             if (selectedMarkerType === "smoke") {
                 !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
             } else {
@@ -218,7 +230,20 @@ const Home = () => {
         <>
             <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                <Banner />
+                <div id='banner' style={{ display: 'flex' }}>
+                    <div className="Banner">
+                        <img src='./images/ic_banner.png'
+                            style={{
+                                width: '58px',
+                                height: '58px'
+                            }}
+                            alt="banner" />
+                        <div className='banner_textContainer'>
+                            <span className='banner_title'>베타 서비스는 서대문구에서 이용 가능!</span>
+                            <span className='banner_subtitle'>현재 신촌역, 이대역, 연세대 일대 운영 중</span>
+                        </div>
+                    </div>
+                </div>
                 <img id="btnLocation"
                     className="btnLocation"
                     src='./images/ic_location_orange.png' />
