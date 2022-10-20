@@ -1,7 +1,6 @@
 .smokeTab {
     /* width: 85%; */
     height: 94px;
-    flex-basis: 0;
     flex-grow: 1;
     /* position: fixed; */
     display: flex;
@@ -56,6 +55,7 @@
     border-radius: 100px;
     box-shadow: 0 4px 10px 0 rgba(255, 85, 25, 0.1);
     background-color: var(--orange-100);
+    border: solid 1px var(--orange-100);
     color: var(--white-100);
 }
 

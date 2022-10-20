@@ -45,16 +45,17 @@ const SmokeTab = ({ data }) => {
                     {data.road}
                 </div>
                 {/* <div className='btnContainer'> */}
-                <div style={{ display: 'flex', gap: '8px'}}>
+                <div style={{ display: 'flex', gap: '8px' }}>
                     <a href={`https://map.kakao.com/link/to/${data.title},${lat},${lng}`}
                         target='_blank'
                         style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
                         <div className='btnNavi Text-Style'>
+                            &nbsp;
                             <img src='./images/ic_direction.svg'></img>
-                            길찾기
+                            길찾기&nbsp;
                         </div>
                     </a>
-                    <Link to={{pathname: "/help", state: {address: data.address }}}
+                    <Link to={{ pathname: "/help", state: { address: data.address } }}
                         style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
                         <div className='btnHelp Text-Style'>
                             <img src='./images/ic_warning.svg' />
