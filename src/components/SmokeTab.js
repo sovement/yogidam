@@ -16,7 +16,7 @@ const SmokeTab = ({ data }) => {
                 src={data.image}
                 alt="흡연구역 이미지" />
             <div className='textContainer'>
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex'}}>
                     <div className="smokeBadge small_text">
                         흡연
                     </div>
