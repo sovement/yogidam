@@ -6,6 +6,7 @@ import NonsmokeTab from '../components/NonsmokeTab';
 import './Home.css';
 import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import ReactGA from 'react-ga';
 
 const Home = () => {
 

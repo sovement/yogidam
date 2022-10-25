@@ -4,6 +4,7 @@ import styles from './MypageDetail.module.css';
 import { auth, db } from '../firebase';
 import { deleteUser } from 'firebase/auth';
 import { doc, deleteDoc } from 'firebase/firestore';
+import ReactGA from 'react-ga';
 
 const MypageDetail = () => {
     const history = useHistory();

@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { signInWithCustomToken } from 'firebase/auth';
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import ReactGA from 'react-ga';
 
 const { Kakao } = window;
 
