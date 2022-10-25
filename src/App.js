@@ -10,6 +10,7 @@ import axios from "axios";
 import { auth, db } from "./firebase";
 import { signInWithCustomToken } from 'firebase/auth';
 import { doc, getDoc, setDoc } from "firebase/firestore";
+import RouteChangeTracker from './components/RouteChangeTracker';
 
 const { Kakao } = window;
 
@@ -19,6 +20,8 @@ export const setOneVh = () => {
 };
 
 const App = () => {
+
+  RouteChangeTracker();
   const [userInform, setUserInform] = useState(null);
 
   useEffect(() => {
