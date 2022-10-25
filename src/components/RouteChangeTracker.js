@@ -8,7 +8,6 @@ const RouteChangeTracker = () => {
 
     useEffect(() => {
         if (!window.location.href.includes("localhost")) {
-            // 환경 변수 사용
             ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID);
         }
         setInitialized(true);
