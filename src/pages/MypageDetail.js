@@ -13,7 +13,7 @@ const MypageDetail = () => {
             history.push('/login');
         }
     }, []);
-    
+
     const useConfirm = (onConfirm, onCancel, message = "Are you sure?") => {
         if (!onConfirm && typeof onConfirm !== "function") {
             return;
@@ -36,13 +36,13 @@ const MypageDetail = () => {
         return confirmAction;
     };
     const applyConfirmLog = () => {
-        
+
         console.log("로그아웃확인완료")
         alert('로그아웃되었습니다.');
         logout();
     }
     const applyConfirmUnlink = () => {
-        
+
         console.log("탈퇴확인완료")
         alert('탙퇴완료되었습니다. 이용해주셔서 감사합니다.');
         unlink();
@@ -62,11 +62,11 @@ const MypageDetail = () => {
     )
 
     const logout = () => {
-        fetch("https://kapi.kakao.com/v1/user/logout",{
+        fetch("https://kapi.kakao.com/v1/user/logout", {
             method: "GET",
             headers: {
-                'Authorization' : `Bearer ${sessionStorage.getItem("kakao_token")}`,
-                'content-type' : 'application/x-www-form-urlencoded;charset=utf-8'
+                'Authorization': `Bearer ${sessionStorage.getItem("kakao_token")}`,
+                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
             },
         })
         auth.signOut();
@@ -76,11 +76,11 @@ const MypageDetail = () => {
 
     const unlink = () => {
         confirmExit();
-        fetch("https://kapi.kakao.com/v1/user/unlink",{
+        fetch("https://kapi.kakao.com/v1/user/unlink", {
             method: "GET",
             headers: {
-                'Authorization' : `Bearer ${sessionStorage.getItem("kakao_token")}`,
-                'content-type' : 'application/x-www-form-urlencoded;charset=utf-8'
+                'Authorization': `Bearer ${sessionStorage.getItem("kakao_token")}`,
+                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
             },
         })
         const user = auth.currentUser;
@@ -127,15 +127,37 @@ const MypageDetail = () => {
                         이메일
                     </div>
                     <div className={styles.content}>
-                    {sessionStorage.getItem("email").slice(-13) === '@sovement.com' ? '이메일 정보가 없습니다.' : sessionStorage.getItem("email")}
+                        {sessionStorage.getItem("email").slice(-13) === '@sovement.com' ? '이메일 정보가 없습니다.' : sessionStorage.getItem("email")}
                     </div>
                     <div className={styles.profileLine} />
                 </div>
             </div>
             <div className={styles.mypage_tab}>
-                <div className="log-out"><div className={styles.tab} onClick={confirmLog}><span>로그아웃</span></div></div>
+                <div className="log-out"
+                    onClick={() => {
+                        ReactGA.event({
+                            category: "Button",
+                            action: "click Logout",
+                            label: "Logout",
+                        });
+                    }}>
+                    <div className={styles.tab} onClick={confirmLog}>
+                        <span>로그아웃</span>
+                    </div>
+                </div>
                 <div className={styles.mypageLine} />
-                <div><div className={styles.tab} onClick={confirmExit}>회원탈퇴</div></div>
+                <div
+                    onClick={() => {
+                        ReactGA.event({
+                            category: "Button",
+                            action: "click Quit",
+                            label: "Quit",
+                        });
+                    }}>
+                    <div className={styles.tab} onClick={confirmExit}>
+                        회원탈퇴
+                    </div>
+                </div>
             </div>
         </>
     );

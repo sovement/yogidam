@@ -171,8 +171,8 @@ const Home = () => {
                     lat = position.coords.latitude;
                     lng = position.coords.longitude;
                     locPosition = new kakao.maps.LatLng(lat, lng);
-                    
-                    if(isInit) {
+
+                    if (isInit) {
                         map.setLevel(1);
                         isInit = false;
                     }
@@ -235,7 +235,14 @@ const Home = () => {
         <>
             <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                <div id='banner' style={{ display: 'flex' }}>
+                <div id='banner' style={{ display: 'flex' }}
+                    onClick={() => {
+                        ReactGA.event({
+                            category: "Button",
+                            action: "click Banner",
+                            label: "Banner",
+                        });
+                    }}>
                     <div className="Banner">
                         <img src='./images/ic_banner.png'
                             style={{
@@ -253,8 +260,24 @@ const Home = () => {
                     className="btnLocation"
                     src='./images/ic_location_orange.png' />
                 <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', flexDirection: 'column', width: '100%' }}>
-                    {tab.state === "smoke" && <SmokeTab data={tab.data} />}
-                    {tab.state === "nonsmoke" && <NonsmokeTab data={tab.data} />}
+                    {tab.state === "smoke" &&
+                        <SmokeTab data={tab.data}
+                            onClick={() => {
+                                ReactGA.event({
+                                    category: "Button",
+                                    action: "click SmokeArea",
+                                    label: "SmokeArea",
+                                });
+                            }} />}
+                    {tab.state === "nonsmoke" &&
+                        <NonsmokeTab data={tab.data}
+                            onClick={() => {
+                                ReactGA.event({
+                                    category: "Button",
+                                    action: "click NonsmokeArea",
+                                    label: "NonsmokeArea",
+                                });
+                            }} />}
                 </div>
             </div>
         </>
