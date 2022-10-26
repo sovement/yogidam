@@ -1,5 +1,5 @@
 .promotionImg {
-    flex-grow: 1;
+    width: 100%;
     max-width: 700px;
 }
 
@@ -9,11 +9,11 @@
 
 .btnKakaoChannel {
     display: flex;
+    padding: 15px 24px;
     background-color: #fee500;
-    width: calc(100% - 32px);
-    margin: 0 16px;
+    width: calc(100% - 80px);
     position: fixed;
-    height: 52px;
+    height: 22px;
     border-radius: 6px;
     bottom: 24px;
 }
