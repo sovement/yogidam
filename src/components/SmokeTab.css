@@ -1,12 +1,8 @@
 .smokeTab {
-    /* width: 85%; */
     height: 94px;
     flex-grow: 1;
-    /* position: fixed; */
     display: flex;
     margin: 0 10px;
-    /* left: 50%; */
-    /* transform: translateX(-50%); */
     z-index: 2;
     padding: 16px;
     border-radius: 4px;

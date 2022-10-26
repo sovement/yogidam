@@ -4,12 +4,13 @@
 
 .promotionNotice {
     width:390px;
-
 }
 
 .btnKakaoChannel {
-    width: 100%;
+    width: calc(100% - 32px);
+    margin: 0 16px;
     position: fixed;
-    flex-grow: 1;
-    margin: 0 24px;
+    height: 52px;
+    border-radius: 6px;
+    bottom: 24px;
 }
