@@ -1,0 +1,15 @@
+.promotionImg {
+    flex-grow: 1;
+}
+
+.promotionNotice {
+    width:390px;
+
+}
+
+.btnKakaoChannel {
+    width: 100%;
+    position: fixed;
+    flex-grow: 1;
+    margin: 0 24px;
+}

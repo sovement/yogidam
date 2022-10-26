@@ -245,15 +245,15 @@ const Home = () => {
                         });
                     }}>
                     <div className="Banner">
-                        <img src='./images/ic_banner.png'
+                        <img src='./images/ic_gift.png'
                             style={{
                                 width: '58px',
                                 height: '58px'
                             }}
                             alt="banner" />
                         <div className='banner_textContainer'>
-                            <span className='banner_title'>베타 서비스는 서대문구에서 이용 가능!</span>
-                            <span className='banner_subtitle'>현재 신촌역, 이대역, 연세대 일대 운영 중</span>
+                            <span className='banner_title'>꽁초 제대로 버리고, 꽁짜로 선물 받자!</span>
+                            <span className='banner_subtitle'>3초만에 리워드 이벤트 참여하기</span>
                         </div>
                     </div>
                 </div>

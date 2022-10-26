@@ -54,12 +54,12 @@ const Header = () => {
                         지도
                     </div>
                 </Link>
-                {/* <Link to="/promotion" style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to="/promotion" style={{ textDecoration: 'none', color: 'black' }}>
                     <div className="tab">
                         <img className="tabIcon" src="./images/ic_reward.svg" />
                         리워드 프로모션
                     </div>
-                </Link> */}
+                </Link>
                 <Link to="/complaint" style={{ textDecoration: 'none', color: 'black' }}>
                     <div className="tab"
                         onClick={() => {
