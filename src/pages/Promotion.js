@@ -25,7 +25,9 @@ const Promotion = () => {
                         className='btnKakaoChannel'
                         style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }}>
                         <img src='./images/ic_kakao.svg' style={{ position: 'absolute', left: '24px', zIndex: '2' }} />
-                        여기담 카카오 채널 바로가기
+                        <span class="\- Body-1">
+                            여기담 카카오 채널 바로가기
+                        </span>
                     </a>
                 </div>
             </div>
