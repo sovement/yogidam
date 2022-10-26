@@ -7,6 +7,7 @@ import './Home.css';
 import { db } from '../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import ReactGA from 'react-ga';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -208,15 +209,14 @@ const Home = () => {
         }
 
         // 배너 클릭 이벤트
-        const banner = document.getElementById('banner');
-        banner.onclick = () => {
-            console.log('Banner clicked');
-            map.setLevel(4);
-            isFocusMoved = true;
-            const btnLocation = document.getElementById('btnLocation');
-            btnLocation.src = './images/ic_location_black.png';
-            map.setCenter(new kakao.maps.LatLng(37.56240, 126.93853));
-        }
+        // const banner = document.getElementById('banner');
+        // banner.onclick = () => {
+        //     map.setLevel(4);
+        //     isFocusMoved = true;
+        //     const btnLocation = document.getElementById('btnLocation');
+        //     btnLocation.src = './images/ic_location_black.png';
+        //     map.setCenter(new kakao.maps.LatLng(37.56240, 126.93853));
+        // }
 
         // 맵 클릭 시 
         kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
@@ -236,27 +236,30 @@ const Home = () => {
         <>
             <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                <div id='banner' style={{ display: 'flex' }}
-                    onClick={() => {
-                        ReactGA.event({
-                            category: "Button",
-                            action: "click Banner",
-                            label: "Banner",
-                        });
-                    }}>
-                    <div className="Banner">
-                        <img src='./images/ic_gift.png'
-                            style={{
-                                width: '58px',
-                                height: '58px'
-                            }}
-                            alt="banner" />
-                        <div className='banner_textContainer'>
-                            <span className='banner_title'>꽁초 제대로 버리고, 꽁짜로 선물 받자!</span>
-                            <span className='banner_subtitle'>3초만에 리워드 이벤트 참여하기</span>
+                <Link to="/promotion" style={{ textDecoration: 'none', color: 'black' }}>
+                    <div id='banner' style={{ display: 'flex' }}
+                        onClick={() => {
+                            ReactGA.event({
+                                category: "Button",
+                                action: "click PromotionBanner",
+                                label: "PromotionBanner",
+                            });
+                        }}>
+                        <div className="Banner">
+                            <img src='./images/ic_gift.png'
+                                style={{
+                                    width: '58px',
+                                    height: '58px'
+                                }}
+                                alt="banner" />
+                            <div className='banner_textContainer'>
+                                <span className='banner_title'>꽁초 제대로 버리고, 꽁짜로 선물 받자!</span>
+                                <span className='banner_subtitle'>3초만에 리워드 이벤트 참여하기</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Link>
+
                 <img id="btnLocation"
                     className="btnLocation"
                     src='./images/ic_location_orange.png' />
