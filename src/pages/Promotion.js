@@ -17,7 +17,7 @@ const Promotion = () => {
                 </div>
 
                 <div style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
-                    <img style={{ marginBottom: '52px' }} className='promotionNotice' src='./images/image_promotion_4.png' />
+                    <img style={{ marginBottom: '52px' }} className='promotionImg' src='./images/image_promotion_4.png' />
 
                     <a
                         target='_blank'
