@@ -15,10 +15,12 @@ const Promotion = () => {
                 <div style={{ display: 'flex', width: '100%', justifyContent: 'center', backgroundColor: '#ffffff' }}>
                     <img className='promotionImg' src='./images/image_promotion_3.png' />
                 </div>
+                <div style={{ display: 'flex', width: '100%', justifyContent: 'center', backgroundColor: '#ffffff' }}>
+                    <img style={{ marginBottom: '76px' }} className='promotionImg' src='./images/image_promotion_4.png' />
+                </div>
 
                 <div style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'center' }}>
-                    <img style={{ marginBottom: '52px' }} className='promotionImg' src='./images/image_promotion_4.png' />
-
+                    <div className="kakaoChannelBackground">
                     <a
                         target='_blank'
                         href="http://pf.kakao.com/_pxjkTxj"
@@ -29,6 +31,7 @@ const Promotion = () => {
                             여기담 카카오 채널 바로가기
                         </span>
                     </a>
+                    </div>
                 </div>
             </div>
         </>
