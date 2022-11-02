@@ -40,7 +40,7 @@ const routes = [
     }, {
         path: "/rules",
         component: Rules,
-    },{
+    }, {
         path: "/rulesprivate",
         component: RulesPrivate,
     },
