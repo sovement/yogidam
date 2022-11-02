@@ -236,16 +236,15 @@ const Home = () => {
         <>
             <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                <Link to="/promotion" style={{ textDecoration: 'none', color: 'black' }}>
-                    <div id='banner' style={{ display: 'flex' }}
-                        onClick={() => {
+                <div className='bannerContainer'>
+                    <Link to="/promotion" style={{marginLeft: '-120px', textDecoration: 'none', color: 'black', width: 'calc(device-width - 32px)', display: 'flex' }}>
+                        <div className="Banner" onClick={() => {
                             ReactGA.event({
                                 category: "Button",
                                 action: "click PromotionBanner",
                                 label: "PromotionBanner",
                             });
                         }}>
-                        <div className="Banner">
                             <img src='./images/ic_gift.png'
                                 style={{
                                     width: '58px',
@@ -257,8 +256,9 @@ const Home = () => {
                                 <span className='banner_subtitle'>3초만에 리워드 이벤트 참여하기</span>
                             </div>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                    <div style={{width: 'calc(device-width - 32px)'}}/>
+                </div>
 
                 <img id="btnLocation"
                     className="btnLocation"

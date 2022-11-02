@@ -26,8 +26,8 @@ const Promotion = () => {
                         href="http://pf.kakao.com/_pxjkTxj"
                         className='btnKakaoChannel'
                         style={{ display: 'flex', justifyContent: 'center', textDecoration: 'none', color: 'black' }}>
-                        <img src='./images/ic_kakao.svg' style={{ position: 'absolute', left: '24px', zIndex: '2' }} />
-                        <span class="\- Body-1">
+                        <img src='./images/ic_kakao.svg' style={{ position: 'absolute', left: '40px', zIndex: '2' }} />
+                        <span className="\- Body-1">
                             여기담 카카오 채널 바로가기
                         </span>
                     </a>
