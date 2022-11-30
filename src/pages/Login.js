@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import Header from '../components/Header';
 import axios from "axios";
@@ -7,10 +7,12 @@ import { auth, db } from "../firebase";
 import { signInWithCustomToken } from 'firebase/auth';
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import ReactGA from 'react-ga';
+import { MoonLoader } from 'react-spinners';
 
 const { Kakao } = window;
 
 const Login = () => {
+    const [loading, setLoading] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
@@ -125,9 +127,11 @@ const Login = () => {
                 <span style={{ position: 'fixed', color: 'var(--black-50)', bottom: '125px' }} class="Subtext Footnote">
                     SNS 계정으로 시작하기
                 </span>
+                {loading && <MoonLoader loading={loading} color={'var(--orange-100)'} />}
                 <a style={{ position: 'fixed', bottom: '60.28px' }} href={KAKAO_AUTH_URI}>
                     <img className='kakaoLogin' src="./images/kakao_login_large_wide.png"
                         onClick={() => {
+                            setLoading(true);
                             ReactGA.event({
                                 category: "Button",
                                 action: "click LoginButton",
