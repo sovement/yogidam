@@ -45,6 +45,7 @@ const Login = () => {
     }, [])
 
     const sendToken = async (data) => {
+        setLoading(true);
         await axios.post(`https://sovement-server.herokuapp.com/verifyToken`, { token: data.access_token })
             .then(function (res) {
                 signInWithCustomToken(auth, res.data.firebase_token)
