@@ -65,6 +65,13 @@ const Home = () => {
 
                 // 마커 클릭 이벤트
                 kakao.maps.event.addListener(marker, 'click', function () {
+
+                    ReactGA.event({
+                            category: "Button",
+                            action: `click nonsmoke (${doc.data.title})`,
+                            label: "SmokeArea",
+                        });
+                    
                     if (!selectedMarker || selectedMarker !== marker) {
                         if (selectedMarkerType === "smoke") {
                             !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
@@ -117,6 +124,13 @@ const Home = () => {
 
                 // 마커 클릭 이벤트
                 kakao.maps.event.addListener(marker, 'click', function () {
+
+                    ReactGA.event({
+                        category: "Button",
+                        action: `click smoke (${doc.data.title})`,
+                        label: "SmokeArea",
+                    });
+
                     if (!selectedMarker || selectedMarker !== marker) {
                         if (selectedMarkerType === "smoke") {
                             !!selectedMarker && selectedMarker.setImage(markerSmokeDefault);
@@ -263,14 +277,7 @@ const Home = () => {
                 <img id="btnLocation"
                     className="btnLocation"
                     src='./images/ic_location_orange.png' />
-                <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', flexDirection: 'column', width: '100%' }}
-                    onClick={() => {
-                        ReactGA.event({
-                            category: "Button",
-                            action: `click ${tab.state}`,
-                            label: "SmokeArea",
-                        });
-                    }}>
+                <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', flexDirection: 'column', width: '100%' }}>
                     {tab.state === "smoke" &&
                         <SmokeTab data={tab.data} />}
                     {tab.state === "nonsmoke" &&
