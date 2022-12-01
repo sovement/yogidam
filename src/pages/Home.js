@@ -68,7 +68,7 @@ const Home = () => {
 
                     ReactGA.event({
                             category: "Button",
-                            action: `click nonsmoke (${doc.data.title})`,
+                            action: `click nonsmoke (${doc.data().title})`,
                             label: "SmokeArea",
                         });
                     
@@ -127,7 +127,7 @@ const Home = () => {
 
                     ReactGA.event({
                         category: "Button",
-                        action: `click smoke (${doc.data.title})`,
+                        action: `click smoke (${doc.data().title})`,
                         label: "SmokeArea",
                     });
 
