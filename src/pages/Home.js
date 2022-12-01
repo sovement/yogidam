@@ -263,25 +263,18 @@ const Home = () => {
                 <img id="btnLocation"
                     className="btnLocation"
                     src='./images/ic_location_orange.png' />
-                <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', flexDirection: 'column', width: '100%' }}>
+                <div style={{ zIndex: '2', position: 'fixed', bottom: '13px', display: 'flex', flexDirection: 'column', width: '100%' }}
+                    onClick={() => {
+                        ReactGA.event({
+                            category: "Button",
+                            action: `click ${tab.state}`,
+                            label: "SmokeArea",
+                        });
+                    }}>
                     {tab.state === "smoke" &&
-                        <SmokeTab data={tab.data}
-                            onClick={() => {
-                                ReactGA.event({
-                                    category: "Button",
-                                    action: "click SmokeArea",
-                                    label: "SmokeArea",
-                                });
-                            }} />}
+                        <SmokeTab data={tab.data} />}
                     {tab.state === "nonsmoke" &&
-                        <NonsmokeTab data={tab.data}
-                            onClick={() => {
-                                ReactGA.event({
-                                    category: "Button",
-                                    action: "click NonsmokeArea",
-                                    label: "NonsmokeArea",
-                                });
-                            }} />}
+                        <NonsmokeTab data={tab.data} />}
                 </div>
             </div>
         </>
