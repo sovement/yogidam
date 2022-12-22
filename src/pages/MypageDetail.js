@@ -76,7 +76,6 @@ const MypageDetail = () => {
     }
 
     const unlink = () => {
-        confirmExit();
         fetch("https://kapi.kakao.com/v1/user/unlink", {
             method: "GET",
             headers: {
