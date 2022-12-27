@@ -46,7 +46,7 @@ const Login = () => {
 
     const sendToken = async (data) => {
         setLoading(true);
-        await axios.post(`https://sovement-server.herokuapp.com/verifyToken`, { token: data.access_token })
+        await axios.post(`https://yogidamserver-production.up.railway.app/verifyToken`, { token: data.access_token })
             .then(function (res) {
                 signInWithCustomToken(auth, res.data.firebase_token)
                     .then((userCredential) => {
@@ -83,12 +83,12 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then((data) => {
-                        let age_range = '';
-                        let gender = '';
-                        if (data.kakao_account.has_age_range) {
+                        let age_range = 'X';
+                        let gender = 'X';
+                        if (data.kakao_account.has_age_range && data.age_range_needs_agreement === false) {
                             age_range = data.kakao_account.age_range
                         }
-                        if (data.kakao_account.has_gender) {
+                        if (data.kakao_account.has_gender && !data.gender_needs_agreement === false) {
                             gender = data.kakao_account.gender
                         }
                         const field = {
