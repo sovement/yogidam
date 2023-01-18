@@ -250,7 +250,7 @@ const Home = () => {
         <>
             <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                <div className='bannerContainer'>
+                {/* <div className='bannerContainer'>
                     <Link to="/promotion" style={{ textDecoration: 'none', color: 'black', width: 'calc(device-width - 32px)', display: 'flex', flexGrow: '1' }}>
                         <div className="Banner" onClick={() => {
                             ReactGA.event({
@@ -271,8 +271,7 @@ const Home = () => {
                             </div>
                         </div>
                     </Link>
-                    {/* <div style={{width: 'calc(device-width - 32px)'}}/> */}
-                </div>
+                </div> */}
 
                 <img id="btnLocation"
                     className="btnLocation"
