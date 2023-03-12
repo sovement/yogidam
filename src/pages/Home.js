@@ -36,6 +36,7 @@ const Home = () => {
 
         // 지도 생성
         var map = new kakao.maps.Map(mapContainer, mapOption);
+        // map.setMaxLevel(5);
 
         var imageSize = new kakao.maps.Size(40, 47), // 마커 이미지의 크기
             imageOption = { offset: new kakao.maps.Point(20, 47) }; // TODO: 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
@@ -250,7 +251,7 @@ const Home = () => {
         <>
             <Header />
             <div id="map" style={{ height: "calc(100vh - 56px)" }}>
-                {/* <div className='bannerContainer'>
+                <div className='bannerContainer'>
                     <Link to="/promotion" style={{ textDecoration: 'none', color: 'black', width: 'calc(device-width - 32px)', display: 'flex', flexGrow: '1' }}>
                         <div className="Banner" onClick={() => {
                             ReactGA.event({
@@ -271,7 +272,7 @@ const Home = () => {
                             </div>
                         </div>
                     </Link>
-                </div> */}
+                </div>
 
                 <img id="btnLocation"
                     className="btnLocation"

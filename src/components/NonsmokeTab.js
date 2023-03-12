@@ -1,7 +1,7 @@
 import './NonsmokeTab.css';
 import { Link } from 'react-router-dom';
 
-const NonsmokeTab = ({data}) => {
+const NonsmokeTab = ({ data }) => {
     return (
         <div className="nonsmokeTab">
             <img style={{
@@ -10,7 +10,7 @@ const NonsmokeTab = ({data}) => {
                 borderRadius: '10px'
             }}
                 src={data.image}
-                alt="금연구역 이미지" />
+                onError={(e) => { e.target.onerror = null; e.target.src = './images/ic_alt_image.png' }}/>
             <div className='textContainer'>
                 <div style={{ display: 'flex' }}>
                     <div className="nonsmokeBadge small_text">
@@ -29,20 +29,21 @@ const NonsmokeTab = ({data}) => {
                     </span>
                 </div>
                 <div className='Footnote'
-                    style={{ 
+                    style={{
                         display: 'inline-block',
                         flexGrow: '1',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
-                        color: 'var(--black-50)', 
-                        margin: '4px 0 17px' }}>
+                        color: 'var(--black-50)',
+                        margin: '4px 0 17px'
+                    }}>
                     {data.road}
                 </div>
                 {/* <div className='btnContainer'> */}
-                <div style={{ display: 'flex', gap: '8px'}}>
+                <div style={{ display: 'flex', gap: '8px' }}>
                     <Link to="/complaint"
-                    style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
+                        style={{ flexGrow: '1', textDecoration: 'none', color: 'black' }}>
                         <div className='btnComplaint Text-Style'>
                             <img style={{ width: '18px', height: '18px' }} src='./images/ic_chat.svg' />
                             민원신청

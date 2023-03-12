@@ -14,7 +14,7 @@ const SmokeTab = ({ data }) => {
                 borderRadius: '10px'
             }}
                 src={data.image}
-                alt="흡연구역 이미지" />
+                onError={(e) => { e.target.onerror = null; e.target.src = './images/ic_alt_image.png' }}/>
             <div className='textContainer'>
                 <div style={{ display: 'flex'}}>
                     <div className="smokeBadge small_text">
